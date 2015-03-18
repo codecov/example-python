@@ -5,7 +5,7 @@ Python Example
 
 > Example of how to integrate with [Codecov.io][1] for your **awesome** Python project!
 
-## See this repos [Coveage Reports][4]
+## See this repo's [Coverage Reports][4]
 
 
 ## Usage
