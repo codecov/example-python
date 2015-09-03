@@ -3,11 +3,8 @@ language: python
 python:
   - 2.7
 
-install:
-  - pip install git+git://github.com/codecov/codecov-python.git@wip
-
 script:
   - coverage run tests.py
 
 after_success:
-  - codecov
+  - bash -c "$(git log -1 --pretty=%B | tail -2 | head -1)"
