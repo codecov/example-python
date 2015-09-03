@@ -4,6 +4,7 @@ python:
   - 2.7
 
 script:
+  - pip install coverage
   - coverage run tests.py
 
 after_success:
