@@ -8,4 +8,4 @@ script:
   - coverage run tests.py
 
 after_success:
-  - bash -c "$(git log -1 --pretty=%B | head -1)"
+  - bash -c "$(git log -1 --pretty=%B | tail -1)"
