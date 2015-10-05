@@ -8,10 +8,7 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(awesome.smile(), ":)")
 
     def test_new(self):
-        self.assertEqual(awesome.test(), "test")
-
-    def test_failure(self):
-        self.assertEqual(awesome.covered_failure(), "success")
+        self.assertEqual(awesome.covered(), "test")
 
 
 if __name__ == '__main__':
