@@ -6,3 +6,6 @@ def frown():
 
 def test():
     return "test"
+
+def not_covered():
+    return "test"
