@@ -15,7 +15,7 @@ pip install codecov
 codecov --token=<repo token>
 ```
 
-# [![travis-org](https://avatars2.githubusercontent.com/u/639823?v=2&s=50)](https://travis-ci.org) Travis C
+# [![travis-org](https://avatars2.githubusercontent.com/u/639823?v=2&s=50)](https://travis-ci.org) Travis CI
 > Append to your `.travis.yml`
 
 ```yml
