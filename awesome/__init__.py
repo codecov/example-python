@@ -8,4 +8,5 @@ def covered():
     return "test"
 
 def not_covered():
-    return "test"
+    if True:
+        return "test"
