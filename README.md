@@ -15,7 +15,30 @@ pip install codecov
 codecov --token=<repo token>
 ```
 
-# [![travis-org](https://avatars2.githubusercontent.com/u/639823?v=2&s=50)](https://travis-ci.org) Travis CI
+## Using `tox`?
+Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
+
+```
+[testenv]
+passenv = CI TRAVIS_BUILD_ID TRAVIS TRAVIS_BRANCH TRAVIS_JOB_NUMBER TRAVIS_PULL_REQUEST TRAVIS_JOB_ID TRAVIS_REPO_SLUG TRAVIS_COMMIT
+deps = codecov>=1.4.0
+commands = codecov -e TOXENV
+```
+> See all the environment variable for other CI providers [here](https://github.com/codecov/codecov-python/blob/master/codecov/__init__.py#L260-L430). Note the `-e TOXENV` is used to distinquish builds in Codecov UI [example](https://codecov.io/gh/pyca/cryptography?ref=99c45f19be196cb45bf8de8ea105fcb4619ab504&build=7312.1).
+
+## Private repositories
+Please provide your private repository token (found at Codecov) to upload reports.
+
+```
+export CODECOV_TOKEN=:token
+codecov
+# or
+codecov -t :token
+```
+
+# Some example CI providers
+
+### [![travis-org](https://avatars2.githubusercontent.com/u/639823?v=2&s=50)](https://travis-ci.org) Travis CI
 > Append to your `.travis.yml`
 
 ```yml
@@ -25,29 +48,18 @@ after_success:
     codecov
 ```
 
-> ### Start testing with [Travis](https://travis-ci.org/)
-
-# [![codeship](https://avatars1.githubusercontent.com/u/2988541?v=2&s=50)](https://codeship.io/) Codeship
-> Append to your `Test Commands` *after* your test commands
-
-```sh
-pip install codecov
-codecov --token=<repo token>
-```
-
-> ### Start testing with [Codeship](https://codeship.io/)
+> Note: No need to include a repository token for **public** repos on Travis
 
 
-# [![circleci](https://avatars0.githubusercontent.com/u/1231870?v=2&s=50)](https://circleci.com/) Circle CI
+### [![circleci](https://avatars0.githubusercontent.com/u/1231870?v=2&s=50)](https://circleci.com/) [Circle CI](https://circleci.com/).
 > Append to your `circle.yml` file
 
 ```yml
 test:
     post:
-        - pip install codecov
-        - codecov --token=<repo token>
+        - pip install codecov && codecov
 ```
-> ### Start testing with [Circle CI](https://circleci.com/)
+> Note: No need to include a repository token for **public** repos on CircleCI
 
 
 
