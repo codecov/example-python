@@ -1,12 +1,9 @@
-import unittest
-
+import nose
 import awesome
 
+def test_add():
+    nose.tools.assert_equal(awesome.smile(), ":)")
 
-class TestMethods(unittest.TestCase):
-    def test_add(self):
-        self.assertEqual(awesome.smile(), ":)")
+def test_whatever():
+    assert True
 
-
-if __name__ == '__main__':
-    unittest.main()
