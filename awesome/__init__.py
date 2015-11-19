@@ -1,3 +1,5 @@
+# no comment
+
 def smile():
     return ":)"
 
