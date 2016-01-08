@@ -62,6 +62,33 @@ test:
 > Note: No need to include a repository token for **public** repos on CircleCI
 
 
+## How to generate coverage reports
+
+The use of [coverage.py](https://bitbucket.org/ned/coveragepy) is required. Below are some examples on how to include coverage tracking during your tests. Codecov will call `coverage xml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
+
+> You may need to configure a `.coveragerc` file. Learn more here: http://coverage.readthedocs.org/en/latest/config.html. Start with this [generic `.coveragerc`](https://gist.github.com/codecov-io/bf15bde2c7db1a011b6e) for example.
+
+#### Default
+
+```py
+pip install coverage
+coverage run tests.py
+```
+
+#### Using pytest
+
+```py
+pip install pytest-cov
+py.test --cov=./
+```
+
+#### Using nosetests
+> http://nose.readthedocs.org/en/latest/plugins/cover.html
+
+```py
+nosetest --with-coverage
+```
+
 
 
 [1]: https://codecov.io/
