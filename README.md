@@ -16,15 +16,16 @@ codecov --token=<repo token>
 ```
 
 ## Using `tox`?
-Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
+Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through.
+Here is an example with Travis CI:
 
 ```
 [testenv]
-passenv = CI TRAVIS_BUILD_ID TRAVIS TRAVIS_BRANCH TRAVIS_JOB_NUMBER TRAVIS_PULL_REQUEST TRAVIS_JOB_ID TRAVIS_REPO_SLUG TRAVIS_COMMIT
+passenv = CI TRAVIS TRAVIS_BRANCH TRAVIS_JOB_NUMBER TRAVIS_PULL_REQUEST TRAVIS_JOB_ID TRAVIS_TAG TRAVIS_REPO_SLUG TRAVIS_COMMIT TRAVIS_BUILD_DIR TRAVIS_OS_NAME
 deps = codecov>=1.4.0
 commands = codecov -e TOXENV
 ```
-> See all the environment variable for other CI providers [here](https://github.com/codecov/codecov-python/blob/master/codecov/__init__.py#L260-L430). Note the `-e TOXENV` is used to distinquish builds in Codecov UI [example](https://codecov.io/gh/pyca/cryptography?ref=99c45f19be196cb45bf8de8ea105fcb4619ab504&build=7312.1).
+> See all the environment variable for other CI providers [here](https://github.com/codecov/codecov-python/blob/master/codecov/__init__.py#L249-L444). Note the `-e TOXENV` is used to distinquish builds in Codecov UI [example](https://codecov.io/gh/pyca/cryptography?ref=99c45f19be196cb45bf8de8ea105fcb4619ab504&build=7312.1).
 
 ## Private repositories
 Please provide your private repository token (found at Codecov) to upload reports.
