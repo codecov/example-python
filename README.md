@@ -20,7 +20,7 @@ Codecov can be ran from inside your `tox.ini` please make sure you pass all the 
 
 ```
 [testenv]
-passenv = CI TRAVIS_BUILD_ID TRAVIS TRAVIS_BRANCH TRAVIS_JOB_NUMBER TRAVIS_PULL_REQUEST TRAVIS_JOB_ID TRAVIS_REPO_SLUG TRAVIS_COMMIT
+passenv = CI TRAVIS TRAVIS_*
 deps = codecov>=1.4.0
 commands = codecov -e TOXENV
 ```
