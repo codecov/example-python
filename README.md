@@ -18,7 +18,7 @@ codecov --token=<repo token>
 ## Using `tox`?
 Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
 
-```
+```ini
 [testenv]
 passenv = CI TRAVIS TRAVIS_*
 deps = codecov>=1.4.0
@@ -29,7 +29,7 @@ commands = codecov -e TOXENV
 ## Private repositories
 Please provide your private repository token (found at Codecov) to upload reports.
 
-```
+```sh
 export CODECOV_TOKEN=:token
 codecov
 # or
@@ -70,14 +70,14 @@ The use of [coverage.py](https://bitbucket.org/ned/coveragepy) is required. Belo
 
 #### Default
 
-```py
+```sh
 pip install coverage
 coverage run tests.py
 ```
 
 #### Using pytest
 
-```py
+```sh
 pip install pytest-cov
 py.test --cov=./
 ```
@@ -85,7 +85,7 @@ py.test --cov=./
 #### Using nosetests
 > http://nose.readthedocs.org/en/latest/plugins/cover.html
 
-```py
+```sh
 nosetest --with-coverage
 ```
 
