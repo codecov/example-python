@@ -1,66 +1,19 @@
-Python Example
-=======
-| [https://codecov.io/][1] | [@codecov][2] | [hello@codecov.io][3] |
-| ------------------------ | ------------- | --------------------- |
-
-> Example of how to integrate with [Codecov.io][1] for your **awesome** Python project!
-
-## See this repo's [Coverage Reports][4]
-
+[Codecov][1] Python Example
+===========================
 
 ## Usage
 
 ```sh
+# 1) install codecov
 pip install codecov
+
+# 2) next call "codecov" at end of CI build
+# public repo using Travis, CircleCI or AppVeyor
+codecov
+
+# all other CI and priveta repositories
 codecov --token=<repo token>
 ```
-
-## Using `tox`?
-Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
-
-```
-[testenv]
-passenv = CI TRAVIS TRAVIS_*
-deps = codecov>=1.4.0
-commands = codecov -e TOXENV
-```
-> See all the environment variable for other CI providers [here](https://github.com/codecov/codecov-python/blob/master/codecov/__init__.py#L260-L430). Note the `-e TOXENV` is used to distinquish builds in Codecov UI [example](https://codecov.io/gh/pyca/cryptography?ref=99c45f19be196cb45bf8de8ea105fcb4619ab504&build=7312.1).
-
-## Private repositories
-Please provide your private repository token (found at Codecov) to upload reports.
-
-```
-export CODECOV_TOKEN=:token
-codecov
-# or
-codecov -t :token
-```
-
-# Some example CI providers
-
-### [![travis-org](https://avatars2.githubusercontent.com/u/639823?v=2&s=50)](https://travis-ci.org) Travis CI
-> Append to your `.travis.yml`
-
-```yml
-install:
-    pip install codecov
-after_success:
-    codecov
-```
-
-> Note: No need to include a repository token for **public** repos on Travis
-
-
-### [![circleci](https://avatars0.githubusercontent.com/u/1231870?v=2&s=50)](https://circleci.com/) [Circle CI](https://circleci.com/).
-> Append to your `circle.yml` file
-
-```yml
-test:
-    post:
-        - pip install codecov && codecov
-```
-> Note: No need to include a repository token for **public** repos on CircleCI
-
 
 ## How to generate coverage reports
 
@@ -68,26 +21,62 @@ The use of [coverage.py](https://bitbucket.org/ned/coveragepy) is required. Belo
 
 > You may need to configure a `.coveragerc` file. Learn more here: http://coverage.readthedocs.org/en/latest/config.html. Start with this [generic `.coveragerc`](https://gist.github.com/codecov-io/bf15bde2c7db1a011b6e) for example.
 
-#### Default
+#### unittests
 
 ```py
 pip install coverage
 coverage run tests.py
 ```
 
-#### Using pytest
+#### pytest
 
 ```py
 pip install pytest-cov
 py.test --cov=./
 ```
 
-#### Using nosetests
+#### nosetests
 > http://nose.readthedocs.org/en/latest/plugins/cover.html
 
 ```py
 nosetest --with-coverage
 ```
+
+
+## Testing with `tox`
+
+Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
+
+```
+[testenv]
+passenv = CI TRAVIS TRAVIS_*
+deps = codecov
+commands = codecov
+```
+> See all the environment variable for other CI providers [here](https://github.com/codecov/codecov-bash/blob/master/env). 
+
+
+-------
+
+# Frequently Asked Questions
+
+####❔Whats the different between the codecov-bash and codecov-python uploader?
+
+As far as python is concerned, **nothing**. You may choose to use either uploader. Codecov recommends using the bash uploader when possible as it supports more unique repository setups.
+
+Learn more at [codecov/codecov-bash](https://github.com/codecov/codecov-bash) and [codecov/codecov-python](https://github.com/codecov/codecov-python)
+
+
+####❔Why am I seeing `No data to report.`
+This output is written by running the command `coverage xml` and states that there were no `.coverage` files found.
+
+1. Make sure coverage is enabled. See [Enabling Coverage](#enabling-coverage)
+2. You may need to run `coverage combine` before running Codecov
+3. Using Docker? Please follow this step: [Testing with Docker: Codecov Inside Docker](https://github.com/codecov/support/wiki/Testing-with-Docker#codecov-inside-docker)
+
+####❔Can I upload my `.coverage` files? 
+
+**No**, these files contain coverage data but are not properly mapped back to the source code. We rely on `coveragepy` to handle this by calling `coverage xml` in the uploader.
 
 
 
