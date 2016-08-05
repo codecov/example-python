@@ -13,7 +13,7 @@ codecov
 codecov --token=<repo token>
 ```
 
-## How to generate coverage reports
+# How to generate coverage reports
 
 [coverage.py](https://bitbucket.org/ned/coveragepy) is required to collect coverage metrics. Below are some examples on how to include coverage tracking during your tests. Codecov will call `coverage xml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
 
@@ -41,7 +41,7 @@ nosetest --with-coverage
 ```
 
 
-## Testing with `tox`
+# Testing with `tox`
 
 Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
 
