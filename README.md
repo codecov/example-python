@@ -1,8 +1,6 @@
 [Codecov][1] Python Example
 ===========================
 
-## Usage
-
 ```sh
 # 1) install codecov
 pip install codecov
@@ -17,7 +15,7 @@ codecov --token=<repo token>
 
 ## How to generate coverage reports
 
-The use of [coverage.py](https://bitbucket.org/ned/coveragepy) is required. Below are some examples on how to include coverage tracking during your tests. Codecov will call `coverage xml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
+[coverage.py](https://bitbucket.org/ned/coveragepy) is required to collect coverage metrics. Below are some examples on how to include coverage tracking during your tests. Codecov will call `coverage xml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
 
 > You may need to configure a `.coveragerc` file. Learn more here: http://coverage.readthedocs.org/en/latest/config.html. Start with this [generic `.coveragerc`](https://gist.github.com/codecov-io/bf15bde2c7db1a011b6e) for example.
 
