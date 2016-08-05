@@ -21,14 +21,14 @@ codecov --token=<repo token>
 
 #### unittests
 
-```py
+```sh
 pip install coverage
 coverage run tests.py
 ```
 
 #### pytest
 
-```py
+```sh
 pip install pytest-cov
 py.test --cov=./
 ```
@@ -36,7 +36,7 @@ py.test --cov=./
 #### nosetests
 > http://nose.readthedocs.org/en/latest/plugins/cover.html
 
-```py
+```sh
 nosetest --with-coverage
 ```
 
@@ -45,7 +45,7 @@ nosetest --with-coverage
 
 Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
 
-```
+```ini
 [testenv]
 passenv = CI TRAVIS TRAVIS_*
 deps = codecov
