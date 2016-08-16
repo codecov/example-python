@@ -9,7 +9,7 @@ pip install codecov
 # public repo using Travis, CircleCI or AppVeyor
 codecov
 
-# all other CI and priveta repositories
+# all other CI and private repositories
 codecov --token=<repo token>
 ```
 
