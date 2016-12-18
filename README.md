@@ -27,6 +27,7 @@ coverage run tests.py
 ```
 
 #### pytest
+> https://pypi.python.org/pypi/pytest-cov/
 
 ```sh
 pip install pytest-cov
