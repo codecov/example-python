@@ -13,6 +13,14 @@ codecov
 codecov --token=<repo token>
 ```
 
+You can alternatively use the environment variables: 
+
+| Argument |   Environment   |                                                                    Description                                                                     |
+| -------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-t`     | `CODECOV_TOKEN` | Private repo token for uploading                                                                                                                   |
+| `-e`     | `CODECOV_ENV`   | List of config vars to store for the build  |
+| `-F`     |      | Flag this upload to group coverage reports. Ex. `unittests` or `integration`  |
+
 # How to generate coverage reports
 
 [coverage.py](https://bitbucket.org/ned/coveragepy) is required to collect coverage metrics. Below are some examples on how to include coverage tracking during your tests. Codecov will call `coverage xml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
@@ -75,7 +83,9 @@ This output is written by running the command `coverage xml` and states that the
 
 **No**, these files contain coverage data but are not properly mapped back to the source code. We rely on `coveragepy` to handle this by calling `coverage xml` in the uploader.
 
+####? How can I integrate with CICD providers? 
 
+Please see the documentation at our [Python repository](https://github.com/codecov/codecov-python/blob/master/README.md#ci-providers)
 
 [1]: https://codecov.io/
 [2]: https://twitter.com/codecov
