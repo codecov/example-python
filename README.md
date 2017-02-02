@@ -17,9 +17,9 @@ You can alternatively use the environment variables:
 
 | Argument |   Environment   |                                                                    Description                                                                     |
 | -------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-t`     | `CODECOV_TOKEN` | Private repo token for uploading                                                                                                                   |
+| `-t`     | `CODECOV_TOKEN` | Private repo token for uploading                                                                                                                    |
 | `-e`     | `CODECOV_ENV`   | List of config vars to store for the build  |
-| `-F`     |      | Flag this upload to group coverage reports. Ex. `unittests` or `integration`  |
+| `-F`     |      | Flag this upload to group coverage reports. Ex. `unittests` or `integration`. [Read the docs](http://docs.codecov.io/docs/flags)  |
 
 # How to generate coverage reports
 
