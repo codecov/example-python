@@ -50,7 +50,7 @@ nosetest --with-coverage
 
 # Testing with `tox`
 
-Codecov can be ran from inside your `tox.ini` please make sure you pass all the necessary environment variables through:
+Codecov can be run from inside your `tox.ini`; please make sure you pass all the necessary environment variables through:
 
 ```ini
 [testenv]
