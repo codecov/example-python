@@ -27,6 +27,13 @@ You can alternatively use the environment variables:
 
 > You may need to configure a `.coveragerc` file. Learn more here: http://coverage.readthedocs.org/en/latest/config.html. Start with this [generic `.coveragerc`](https://gist.github.com/codecov-io/bf15bde2c7db1a011b6e) for example.
 
+We highly suggest adding `source` to your `.coveragerc` which solves a number of issues collecting coverage.
+
+```
+[run]
+source=your_package_name
+```
+
 #### unittests
 
 ```sh
