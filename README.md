@@ -72,7 +72,7 @@ commands = codecov
 
 # Frequently Asked Questions
 
-####❔Whats the different between the codecov-bash and codecov-python uploader?
+#### ❔Whats the different between the codecov-bash and codecov-python uploader?
 
 As far as python is concerned, **nothing**. You may choose to use either uploader. Codecov recommends using the bash uploader when possible as it supports more unique repository setups.
 
@@ -86,11 +86,11 @@ This output is written by running the command `coverage xml` and states that the
 2. You may need to run `coverage combine` before running Codecov
 3. Using Docker? Please follow this step: [Testing with Docker: Codecov Inside Docker](https://github.com/codecov/support/wiki/Testing-with-Docker#codecov-inside-docker)
 
-####❔Can I upload my `.coverage` files? 
+#### ❔Can I upload my `.coverage` files? 
 
 **No**, these files contain coverage data but are not properly mapped back to the source code. We rely on `coveragepy` to handle this by calling `coverage xml` in the uploader.
 
-####? How can I integrate with CICD providers? 
+#### ?How can I integrate with CICD providers? 
 
 Please see the documentation at our [Python repository](https://github.com/codecov/codecov-python/blob/master/README.md#ci-providers)
 
