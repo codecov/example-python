@@ -5,7 +5,7 @@
 
 .. image:: https://codecov.io/gh/codecov/example-python/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/codecov/example-python
-  
+
 Overview
 --------
 
@@ -133,14 +133,14 @@ Details on the badges and graphs can be found under `settings/Badge  <https://co
 
 .. code-block::
 
-   .. image:: https://codecov.io/gh/owner/repo/branch/master/graph/badge.svg
-     :target: https://codecov.io/gh/owner/repo
+   .. image:: https://codecov.io/gh/codecov/example-python/branch/master/graph/badge.svg
+     :target: https://codecov.io/gh/codecov/example-python
 
 
 Which will generate:
 
-.. image:: https://codecov.io/gh/owner/repo/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/owner/repo
+.. image:: https://codecov.io/gh/codecov/example-python/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/codecov/example-python
 
 Links
 =======
