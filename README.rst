@@ -106,7 +106,7 @@ As far as python is concerned, *nothing*. You may choose to use either uploader.
 Learn more at `codecov/codecov-bash <https://github.com/codecov/codecov-bash>`_ and `codecov/codecov-python <https://github.com/codecov/codecov-python>`_.
 
 
-Why am I seeing ``No data to report.``
+Why am I seeing ``No data to report``?
 --------------------------------------
 
 This output is written by running the command ``coverage xml`` and states that there were no ``.coverage`` files found.
