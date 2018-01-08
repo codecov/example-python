@@ -2,7 +2,7 @@
 ## Guide
 ### Travis Setup
 
-Add the following to your `travis.yml`:
+Add the following to your `.travis.yml`:
 ```yml
 language:
   python
@@ -48,13 +48,12 @@ commands = codecov
 ```
 ## Caveats
 #### Private Repo
-You will need to add the following your `travis.yml`:
+You will need to add the following your `.travis.yml`:
 ```yml
 env:
   global:
     - CODECOV_TOKEN=:uuid-repo-token
 ```
-We can add more caveats for the language/framework(s) here
 
 ## Support
 
