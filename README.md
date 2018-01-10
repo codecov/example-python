@@ -54,6 +54,8 @@ env:
   global:
     - CODECOV_TOKEN=:uuid-repo-token
 ```
+#### Cobertura Reports
+Cobertura reports can expire - Codecov will reject reports that are older than 12 hours. The logs contain details if a report expired.
 
 ## Support
 
