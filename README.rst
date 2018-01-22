@@ -68,8 +68,8 @@ pytest
 
    ptest --cov=./
 
-nosetests
----------
+nosetest
+--------
 
 
 .. code-block:: shell-session
