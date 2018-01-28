@@ -66,7 +66,8 @@ pytest
 
 .. code-block:: shell-session
 
-   ptest --cov=./
+   pip install pytest pytest-cov
+   pytest --cov=./
 
 nosetest
 --------
