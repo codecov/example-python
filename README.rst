@@ -69,13 +69,13 @@ pytest
    pip install pytest pytest-cov
    pytest --cov=./
 
-nosetest
+nosetests
 --------
 
 
 .. code-block:: shell-session
 
-   nosetest --with-coverage
+   nosetests --with-coverage
 
 See the `Offical Nose coverage docs <http://nose.readthedocs.org/en/latest/plugins/cover.html>`_ for more information.
 
