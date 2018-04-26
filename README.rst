@@ -9,7 +9,8 @@
 Overview
 --------
 
-Main website: `Codecov <https://codecov.io/>`_.
+
+website: `Codecov <https://codecov.io/>`_.
 
 .. code-block:: shell-session
 
@@ -150,5 +151,4 @@ Links
 * Twitter: `@codecov <https://twitter.com/codecov>`_.
 * Email: `hello@codecov.io <hello@codecov.io>`_.
 
-We are happy to help if you have any questions. Please contact email our Support at [support@codecov.io](mailto:support@codecov.io)
-
+We are happy to help if you have any questions. Please contact email our Support at `support@codecov.io <mailto:support@codecov.io>`_.
