@@ -54,7 +54,7 @@ We highly suggest adding `source` to your ``.coveragerc``, which solves a number
    [run]
    source=your_package_name
    
-If there are multiple sources, you instead should add 'include' to your ``.coveragerc``
+If there are multiple sources, you instead should add `include` to your ``.coveragerc``
 
 .. code-block:: ini
 
