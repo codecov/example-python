@@ -43,7 +43,7 @@ How to generate coverage reports
 
 `coverage.py <https://bitbucket.org/ned/coveragepy>`_ is required to collect coverage metrics.
 
-Below are some examples on how to include coverage tracking during your tests. Codecov will call `coveragexml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
+Below are some examples on how to include coverage tracking during your tests. Codecov will call `coverage xml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
 
 You may need to configure a ``.coveragerc`` file. Learn more `here <http://coverage.readthedocs.org/en/latest/config.html>`_. Start with this `generic .coveragerc <https://gist.github.com/codecov-io/bf15bde2c7db1a011b6e>`_ for example.
 
