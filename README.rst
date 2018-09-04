@@ -122,7 +122,7 @@ This output is written by running the command ``coverage xml`` and states that t
 
 1. Make sure coverage is enabled. See Enabling Coverage
 2. You may need to run ``coverage combine`` before running Codecov.
-3. Using Docker? Please follow this step: `Testing with Docker <https://docs.codecov.io/docs/testing-with-docker>`_.
+3. Using Docker? Please follow this step: `Testing with Docker: Codecov Inside Docker <https://docs.codecov.io/docs/testing-with-docker#section-codecov-inside-docker>`_.
 
 Can I upload my ``.coverage`` files?
 ------------------------------------
