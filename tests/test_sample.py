@@ -7,3 +7,7 @@ def test_something():
 
 def test_fib():
     assert awesome.fib(1) == 1
+
+
+def test_fib_second():
+    assert awesome.fib(3) == 3
