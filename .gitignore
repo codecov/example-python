@@ -1,0 +1,9 @@
+venv
+.coverage
+coverage.xml
+
+#Python compile
+*.pyc
+
+#VSCode dependency
+.vscode
