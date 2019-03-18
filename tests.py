@@ -8,7 +8,7 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(awesome.smile(), ":)")
 
     def test_frown(self):
-        self.assertEqual(awesome.frown, ":(")
+        self.assertEqual(awesome.frown(), ":(")
 
 if __name__ == '__main__':
     unittest.main()
