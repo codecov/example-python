@@ -14,3 +14,7 @@ def fib(n):
 
 def coala(k):
     return k * k
+
+
+def sample_function():
+    return "Arr" * 100
