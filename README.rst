@@ -107,7 +107,7 @@ See all the environment variables for `other CI providers  <https://github.com/c
 Frequently Asked Questions
 ==========================
 
-Whats the different between the codecov-bash and codecov-python uploader?
+What's the difference between the codecov-bash and codecov-python uploader?
 -------------------------------------------------------------------------
 
 As far as python is concerned, *nothing*. You may choose to use either uploader. Codecov recommends **using the bash uploader when possible** as it supports more unique repository setups.
