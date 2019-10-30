@@ -1,10 +1,12 @@
 [Codecov] Python Example
 =========================
 
-.. contents:: Topics
-
 .. image:: https://codecov.io/gh/codecov/example-python/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/codecov/example-python
+  
+  
+.. contents:: Topics
+
 
 Overview
 --------
