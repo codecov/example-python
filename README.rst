@@ -1,3 +1,7 @@
+[DEPRECATED] This repository will be deprecated in favor of https://github.com/codecov/python-standard
+======================================================================================================
+As of 2019-12-03
+
 [Codecov] Python Example
 =========================
 
@@ -42,6 +46,7 @@ You can alternatively use the environment variables:
 
 How to generate coverage reports
 ================================
+
 
 `coverage.py <https://github.com/nedbat/coveragepy>`_ is required to collect coverage metrics.
 
