@@ -14,6 +14,9 @@ install:
 # Run the unit test
 script:
   - coverage run tests.py
+  - bash <(curl -s https://codecov.io/bash) -c -F unittest
+  - coverage run tests2.py
+  - bash <(curl -s https://codecov.io/bash) -c -F behave
 
 # Push the results back to codecov
 after_success:
