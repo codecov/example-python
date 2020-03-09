@@ -1,0 +1,12 @@
+coverage:
+  status:
+    project:
+      default: off
+    behave:
+      default: off
+
+flags:
+  project:
+    paths: off
+  behave:
+    paths: off
