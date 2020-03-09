@@ -18,3 +18,10 @@ script:
 # Push the results back to codecov
 after_success:
   - codecov
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: '27438eaff39a6d9976ef4a83da8b3a5b38fd4d07' # Set in travis-ci.org dashboard
+  on:
+    branch: master
