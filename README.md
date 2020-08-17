@@ -32,7 +32,7 @@ coverage run tests.py
 ```
 #### pytest
 ```
-ptest --cov=./
+pytest --cov=./
 ```
 #### nosetests
 ```
