@@ -1,4 +1,6 @@
 # [Codecov](https://codecov.io) Python Example
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python?ref=badge_shield)
+
 
 ## Guide
 
@@ -70,3 +72,7 @@ Cobertura reports can expire - Codecov will reject reports that are older than 1
 - [Support](https://codecov.io/support)
 - [Documentation](https://docs.codecov.io)
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python?ref=badge_large)
