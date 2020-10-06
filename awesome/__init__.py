@@ -2,4 +2,4 @@ def smile():
     return ":)"
 
 def frown():
-    return ":("
+    return ":(1"
