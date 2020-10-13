@@ -53,14 +53,14 @@ commands = codecov
 ```
 
 ### FAQ
-- Q:  What's the difference between the codecov-bash and codecov-python uploader?
+- Q:  What's the difference between the codecov-bash and codecov-python uploader?  
   A: As far as python is concerned, *nothing*. You may choose to use either uploader. Codecov recommends **using the bash uploader when possible** as it supports more unique repository setups. Learn more at [codecov/codecov-bash](https://github.com/codecov/codecov-bash>) and [codecov/codecov-python](https://github.com/codecov/codecov-python>).
-- Q:  Why am I seeing `No data to report`?
+- Q:  Why am I seeing `No data to report`?  
   A: This output is written by running the command `coverage xml` and states that there were no `.coverage` files found.
 	1. Make sure coverage is enabled. See Enabling Coverage
 	2. You may need to run `coverage combine` before running Codecov.
 	3. Using Docker? Please follow this step: [Testing with Docker: Codecov Inside Docker](https://github.com/codecov/support/wiki/Testing-with-Docker#codecov-inside-docker>).
-- Q: Can I upload my `.coverage` files?
+- Q: Can I upload my `.coverage` files?  
   A: **No**, these files contain coverage data but are not properly mapped back to the source code. We rely on `coveragepy` to handle this by calling `coverage xml` in the uploader.
 
 ## Caveats
