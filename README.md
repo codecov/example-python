@@ -59,7 +59,7 @@ commands = codecov
   A: This output is written by running the command `coverage xml` and states that there were no `.coverage` files found.
 	1. Make sure coverage is enabled. See Enabling Coverage
 	2. You may need to run `coverage combine` before running Codecov.
-	3. Using Docker? Please follow this step: [Testing with Docker: Codecov Inside Docker](https://github.com/codecov/support/wiki/Testing-with-Docker#codecov-inside-docker).
+	3. Using Docker? Please follow this step: [Testing with Docker: Codecov Inside Docker](https://docs.codecov.io/docs/testing-with-docker#codecov-inside-docker).
 - Q: Can I upload my `.coverage` files?  
   A: **No**, these files contain coverage data but are not properly mapped back to the source code. We rely on `coveragepy` to handle this by calling `coverage xml` in the uploader.
 
