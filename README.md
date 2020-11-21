@@ -4,6 +4,23 @@
 
 ## Guide
 
+### GitHub Actions
+A minimal configuration for public repos:
+
+```yml
+steps:
+  # (Other steps go here)
+  - name: "Upload coverage to Codecov"
+    uses: codecov/codecov-action@v1
+    with:
+      fail_ci_if_error: true
+      verbose: true
+```
+
+See [codecov/codecov-action](https://github.com/codecov/codecov-action) for
+more information, a [detailed example](https://github.com/codecov/codecov-action#example-workflowyml-with-codecov-action),
+and other options.
+
 ### Travis Setup
 
 Add the following to your `.travis.yml`:
@@ -65,7 +82,9 @@ commands = codecov
 
 ## Caveats
 ### Private Repo
-Repository tokens are required for (a) all private repos, (b) public repos not using Travis-CI, CircleCI or AppVeyor. Find your repository token at Codecov and provide via appending `-t <your upload token>` to you where you upload reports.
+Repository tokens are required for (a) all private repos, (b) public repos not using the [Codecov GitHub Action][https://github.com/codecov/codecov-action], Travis CI, CircleCI or AppVeyor.
+
+Find your repository token at Codecov and provide via appending `-t <your upload token>` to you where you upload reports.
 
 ### Cobertura Reports
 Cobertura reports can expire - Codecov will reject reports that are older than 12 hours. The logs contain details if a report expired.
