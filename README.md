@@ -14,7 +14,6 @@ steps:
     uses: codecov/codecov-action@v1
     with:
       fail_ci_if_error: true
-      verbose: true
 ```
 
 See [codecov/codecov-action](https://github.com/codecov/codecov-action) for
