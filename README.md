@@ -82,7 +82,7 @@ commands = codecov
 
 ## Caveats
 ### Private Repo
-Repository tokens are required for (a) all private repos, (b) public repos not using the [Codecov GitHub Action][https://github.com/codecov/codecov-action], Travis CI, CircleCI or AppVeyor.
+Repository tokens are required for (a) all private repos, (b) public repos not using the GitHub Actions, Travis CI, CircleCI or AppVeyor.
 
 Find your repository token at Codecov and provide via appending `-t <your upload token>` to you where you upload reports.
 
