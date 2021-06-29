@@ -3,3 +3,7 @@ def smile():
 
 def frown():
     return ":("
+
+def angry():
+    return ":@"
+    
