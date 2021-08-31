@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov:3.0.0
+
 jobs:
   build:
     docker:
@@ -12,7 +13,7 @@ jobs:
           command: pip install -r requirements.txt
       - run:
           name: Run tests and collect coverage
-          run: |
+          command: |
             coverage run tests.py
             coverage xml
       - codecov/upload
