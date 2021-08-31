@@ -1,0 +1,20 @@
+name: Workflow for Codecov example-python
+on: [push, pull_request]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests and collect coverage
+        run: |
+          coverage run tests.py
+          coverage xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
