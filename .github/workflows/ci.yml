@@ -9,7 +9,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
-        run: coverage run tests.py
+        run: |
+          coverage run tests.py
+          coverage xml
       - name: Download and validate Codecov uploader
         run: |
           curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
