@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   codecov: codecov/codecov:3.0.0
 jobs:
-  build-and-test:
+  build:
     docker:
       - image: cimg/python:3.9.6
     steps:
@@ -16,3 +16,9 @@ jobs:
             coverage run tests.py
             coverage xml
       - codecov/upload
+
+workflow:
+  version: 2.1
+  build-test:
+    jobs:
+      - build
