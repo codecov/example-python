@@ -1,6 +1,6 @@
 version: 2.1
-orbs:
-  codecov: codecov/codecov@3.0.0
+#orbs:
+#  codecov: codecov/codecov@3.0.0
 
 jobs:
   build:
@@ -16,7 +16,10 @@ jobs:
           command: |
             coverage run tests.py
             coverage xml
-      - codecov/upload
+      - run:
+        name: Upload coverage
+        command:
+          bash <(curl -s https://codecov.io/bash)
 
 workflow:
   version: 2.1

@@ -2,6 +2,7 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python?ref=badge_shield)
 
 [![CircleCI](https://circleci.com/gh/glozanoa/example-python/tree/master.svg?style=svg)](https://circleci.com/gh/glozanoa/example-python/tree/master)
+[![codecov](https://codecov.io/gh/glozanoa/example-python/branch/master/graph/badge.svg?token=2HIMOD4F7J)](https://codecov.io/gh/glozanoa/example-python)
 
 ## Guide
 
