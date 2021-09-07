@@ -9,13 +9,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: pip install -r requirements.txt
+          name: Install dependencies and package
+          command: |
+            pip install -r requirements.txt
+            pip install .
       - run:
           name: Run tests and collect coverage
           command: |
-            coverage run tests.py
-            coverage xml
+            pip install pytest-cov
+            pytest --cov tests --cov-report xml
       - run:
           name: Upload coverage
           command:
