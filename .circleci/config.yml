@@ -17,7 +17,7 @@ jobs:
           name: Run tests and collect coverage
           command: |
             pip install pytest-cov
-            pytest --cov=awesome --cov-report=xml tests/
+            pytest --cov=awesome --cov-report=xml tests/*.py
       - run:
           name: Upload coverage
           command:
