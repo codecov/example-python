@@ -5,15 +5,16 @@
 ## Guide
 
 ### GitHub Actions
-A minimal configuration for public repos:
+A minimal configuration might look like:
 
 ```yml
 steps:
   # (Other steps go here)
   - name: "Upload coverage to Codecov"
-    uses: codecov/codecov-action@v1
+    uses: codecov/codecov-action@v2
     with:
       fail_ci_if_error: true
+      token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
 ```
 
 See [codecov/codecov-action](https://github.com/codecov/codecov-action) for
