@@ -21,20 +21,10 @@ See [codecov/codecov-action](https://github.com/codecov/codecov-action) for
 more information, a [detailed example](https://github.com/codecov/codecov-action#example-workflowyml-with-codecov-action),
 and other options.
 
-### Travis Setup
-
-Add the following to your `.travis.yml`:
-```yml
-language:
-  python
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-```
-
 ### Produce Coverage Reports
 [coverage.py](https://github.com/nedbat/coveragepy) is required to collect coverage metrics.
 
-Below are some examples on how to include coverage tracking during your tests. Codecov will call `coveragexml -i` automatically to generate the coverage xml output, which will be archived and processed server side.
+Below are some examples on how to include coverage tracking during your tests. You will need to call `coverage xml` to generate the coverage xml output, which will be archived and processed server side.
 
 You may need to configure a `.coveragerc` file. Learn more [here](http://coverage.readthedocs.org/en/latest/config.html). Start with this [generic .coveragerc](https://gist.github.com/codecov-io/bf15bde2c7db1a011b6e) for example.
 
