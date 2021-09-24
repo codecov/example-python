@@ -52,7 +52,7 @@ coverage run tests.py
 #### pytest
 ```
 pip install pytest-cov
-pytest --cov=./
+pytest --cov=./ --cov-report=xml
 ```
 #### nosetests
 ```
