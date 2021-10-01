@@ -48,6 +48,7 @@ source=your_package_name
 ```
 pip install coverage
 coverage run tests.py
+coverage xml
 ```
 #### pytest
 ```
