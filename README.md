@@ -38,11 +38,12 @@ source=your_package_name
 ```
 pip install coverage
 coverage run tests.py
+coverage xml
 ```
 #### pytest
 ```
 pip install pytest-cov
-pytest --cov=./
+pytest --cov=./ --cov-report=xml
 ```
 #### nosetests
 ```
