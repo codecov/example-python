@@ -1,6 +1,6 @@
 name: Workflow for Codecov example-python
 on: 
-  push:
+  pull_request:
     branches: [ master ]
 jobs:
   run:
@@ -18,25 +18,24 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Restore cache for push
-        if: github.event_name == 'push'
-        id: restore_cache_push
+      - name: Restore cache for pull requests
+        if: github.event_name == 'pull_request'
+        id: restore_cache_pull
         uses: actions/cache@v3
         with:
           path: coverage.xml
-          key: coverage-${{ github.sha }}
+          key: coverage-${{ github.event.pull_request.head.sha }}
 
       - name: Run tests and collect coverage
-        if: steps.restore_cache_push.outputs.cache-hit != 'true'
+        if: steps.restore_cache_pull.outputs.cache-hit != 'true' 
         run: pytest --cov app
 
-      - name: Cache codecov for push
-        if: steps.restore_cache_push.outputs.cache-hit != 'true'
+      - name: Cache codecov for pull requests
+        if: steps.restore_cache_pull.outputs.cache-hit != 'true' 
         uses: actions/cache@v3
         with:
           path: coverage.xml
-          key: coverage-${{ github.sha }}
-    
+          key: coverage-${{ github.event.pull_request.head.sha }}
       
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
