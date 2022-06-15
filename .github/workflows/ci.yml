@@ -27,7 +27,7 @@ jobs:
       - name: Debug
         run: "echo $cache-hit"
         env: 
-          cache-hit: "${{ steps.codecov1.outcome.cache-hit }}
+          cache-hit: "{{ steps.codecov1.outcome.cache-hit }}
 
       - name: Run tests and collect coverage
         id: codecov2
