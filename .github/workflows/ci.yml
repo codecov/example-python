@@ -25,7 +25,7 @@ jobs:
           key: coverage-${{ github.sha }}
 
       - name: Debug
-        run: "echo ${{ env.cache-hit }}"
+        run: "echo $cache-hit"
         env: 
           cache-hit: "${{ steps.codecov1.outcome.cache-hit }}
 
