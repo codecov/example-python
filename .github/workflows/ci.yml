@@ -16,42 +16,28 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      # - name: Cache multiple paths
-      #   id: codecov1
-      #   uses: ylemkimon/cache-restore@v2
-      #   with:
-      #     path: coverage.xml
-      #     key: coverage-${{ github.sha }}
+      - name: Restore cache for pull requests
+        if: github.event_name == 'pull_request'
+        id: restore_cache_pull
+        uses: actions/cache@v3
+        with:
+          path: coverage.xml
+          key: coverage-${{ github.event.pull_request.head.sha }}
 
-      - name: Cache codecov
-        id: codecov1
+      - name: Restore cache for push
+        if: github.event_name == 'push'
+        id: restore_cache_push
         uses: actions/cache@v3
         with:
           path: coverage.xml
           key: coverage-${{ github.sha }}
 
-
-      - name: Use jq to process JSON output from above command
-        run: |
-          echo '${{ steps.codecov1.outputs.cache-hit }}' 
-
-
-      - name: Comment
-        run: "ls ."
-
       - name: Run tests and collect coverage
-        if: steps.codecov1.outputs.cache-hit != 'true'
+        if: steps.restore_cache_pull.outputs.cache-hit != 'true' and steps.restore_cache_push.outputs.cache-hit != 'true'
         run: pytest --cov app
 
-      # - name: Cache multiple paths
-      #   uses: ylemkimon/cache-restore@v2
-      #   with:
-      #     path: coverage.xml
-      #     key: coverage-${{ github.sha }}
-
-
       - name: Cache codecov
-        if: steps.codecov1.outputs.cache-hit != 'true'
+        if: steps.restore_cache_pull.outputs.cache-hit != 'true' and steps.restore_cache_push.outputs.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: coverage.xml
