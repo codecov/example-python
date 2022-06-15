@@ -19,7 +19,7 @@ jobs:
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: coverage-{{ github.sha }}.xml
+          name: coverage-${{ github.sha }}.xml
           path: coverage.xml
       - name: Comment
         run: "ls ."
