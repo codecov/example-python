@@ -23,6 +23,10 @@ jobs:
           path: coverage.xml
           key: coverage-${{ github.sha }}
       
+      - name: Use jq to process JSON output from above command
+        run: |
+          echo '${{ steps.codecov1.outputs }}' | jq '{id: .[].id}'
+
       # - name: Cache codecov
       #   id: codecov1
       #   uses: actions/cache@v3
