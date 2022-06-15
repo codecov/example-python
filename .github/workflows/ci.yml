@@ -24,19 +24,14 @@ jobs:
           path: coverage.xml
           key: coverage-${{ github.sha }}
 
-      - name: Debug
-        run: "echo $cache-hit"
-        env: 
-          cache-hit: "{{ steps.codecov1.outcome.cache-hit }}"
-
       - name: Run tests and collect coverage
         id: codecov2
-        if: steps.codecov1.outcome.cache-hit == 'false' 
+        if: steps.codecov1.outcome.cache-hit != 'true' 
         run: pytest --cov app
     
       - name: Cache codecov
         id: codecov3
-        if: steps.codecov1.outcome.cache-hit == 'false'
+        if: steps.codecov1.outcome.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: coverage.xml
