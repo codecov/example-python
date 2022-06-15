@@ -18,7 +18,6 @@ jobs:
       
       - name: Cache codecov
         id: codecov1
-        continue-on-error: true
         uses: actions/cache@v3
         with:
           path: coverage.xml
