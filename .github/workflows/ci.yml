@@ -14,12 +14,12 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
         run: pytest --cov app
-      - name: Comment
-        run: "ls ."
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
           name: coverage-{{ github.sha }}.xml
           path: output/test/coverage.xml
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+      - name: Comment
+        run: "ls ."
