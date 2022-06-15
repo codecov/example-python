@@ -33,11 +33,11 @@ jobs:
           key: coverage-${{ github.sha }}
 
       - name: Run tests and collect coverage
-        if: steps.restore_cache_pull.outputs.cache-hit != 'true' and steps.restore_cache_push.outputs.cache-hit != 'true'
+        if: steps.restore_cache_pull.outputs.cache-hit != 'true' && steps.restore_cache_push.outputs.cache-hit != 'true'
         run: pytest --cov app
 
       - name: Cache codecov
-        if: steps.restore_cache_pull.outputs.cache-hit != 'true' and steps.restore_cache_push.outputs.cache-hit != 'true'
+        if: steps.restore_cache_pull.outputs.cache-hit != 'true' && steps.restore_cache_push.outputs.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: coverage.xml
