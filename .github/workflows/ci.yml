@@ -34,7 +34,7 @@ jobs:
         run: "ls ."
 
       - name: Run tests and collect coverage
-        if: steps.codecov1.outcome.cache-hit != 'true'
+        if: steps.codecov1.outcome.cache-hit == 'false'
         run: pytest --cov app
 
       # - name: Cache multiple paths
@@ -45,7 +45,7 @@ jobs:
 
 
       - name: Cache codecov
-        if: steps.codecov1.outcome.cache-hit != 'true'
+        if: steps.codecov1.outcome.cache-hit == 'false'
         uses: actions/cache@v3
         with:
           path: coverage.xml
