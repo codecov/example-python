@@ -24,6 +24,9 @@ jobs:
           path: coverage.xml
           key: coverage-${{ github.sha }}
 
+      - name: Comment
+        run: "ls ."
+
       - name: Run tests and collect coverage
         id: codecov2
         if: steps.codecov1.outcome.cache-hit != 'true' 
