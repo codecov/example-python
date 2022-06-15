@@ -20,6 +20,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: coverage-{{ github.sha }}.xml
-          path: output/test/coverage.xml
+          path: coverage.xml
       - name: Comment
         run: "ls ."
