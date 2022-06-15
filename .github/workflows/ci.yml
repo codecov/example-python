@@ -37,14 +37,14 @@ jobs:
         run: pytest --cov app
 
       - name: Cache codecov for pull requests
-        if: steps.restore_cache_pull.outputs.cache-hit != 'true' && steps.restore_cache_push.outputs.cache-hit != 'true'
+        if: github.event_name == 'pull_request' && steps.restore_cache_pull.outputs.cache-hit != 'true' && steps.restore_cache_push.outputs.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: coverage.xml
           key: coverage-${{ github.event.pull_request.head.sha }}
 
       - name: Cache codecov for push
-        if: steps.restore_cache_pull.outputs.cache-hit != 'true' && steps.restore_cache_push.outputs.cache-hit != 'true'
+        if: github.event_name == 'push' && steps.restore_cache_pull.outputs.cache-hit != 'true' && steps.restore_cache_push.outputs.cache-hit != 'true'
         uses: actions/cache@v3
         with:
           path: coverage.xml
