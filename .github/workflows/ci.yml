@@ -17,7 +17,7 @@ jobs:
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: coverage.xml
-          path: output/test/coverage-{{ github.sha }}
+          name: output/test/coverage-{{ github.sha }}.xml
+          path: coverage.xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
