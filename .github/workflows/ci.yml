@@ -16,28 +16,41 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Cache codecov
+      - name: Cache multiple paths
         id: codecov1
-        uses: actions/cache@v3
+        uses: ylemkimon/cache-restore@v2
         with:
           path: coverage.xml
           key: coverage-${{ github.sha }}
+      
+      # - name: Cache codecov
+      #   id: codecov1
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: coverage.xml
+      #     key: coverage-${{ github.sha }}
 
       - name: Comment
         run: "ls ."
 
       - name: Run tests and collect coverage
-        id: codecov2
-        if: steps.codecov1.outcome.cache-hit == 'false' 
+        if: steps.codecov1.outcome.cache-hit != 'true'
         run: pytest --cov app
-    
-      - name: Cache codecov
-        id: codecov3
-        if: steps.codecov1.outcome.cache-hit == 'false'
-        uses: actions/cache@v3
+
+      - name: Cache multiple paths
+        uses: ylemkimon/cache-restore@v2
         with:
           path: coverage.xml
           key: coverage-${{ github.sha }}
+
+
+      # - name: Cache codecov
+      #   id: codecov3
+      #   if: steps.codecov1.outcome.cache-hit != 'true'
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: coverage.xml
+      #     key: coverage-${{ github.sha }}
       
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
