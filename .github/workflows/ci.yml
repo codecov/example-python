@@ -16,10 +16,21 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      # - name: Run tests and collect coverage
-      #   run: pytest --cov app
-      
       - name: Cache codecov
+        id: codecov1
+        uses: actions/cache@v3
+        with:
+          path: coverage.xml
+          key: coverage-${{ github.sha }}
+
+      - name: Run tests and collect coverage
+        id: codecov2
+        if: steps.codecov1.outcome != 'success'
+        run: pytest --cov app
+    
+      - name: Cache codecov
+        id: codecov3
+        if: steps.codecov1.outcome != 'success'
         uses: actions/cache@v3
         with:
           path: coverage.xml
