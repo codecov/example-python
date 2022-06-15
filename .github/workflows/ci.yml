@@ -25,7 +25,7 @@ jobs:
       
       - name: Use jq to process JSON output from above command
         run: |
-          echo '${{ steps.codecov1.outputs }}' | jq 
+          echo '${{ steps.codecov1.outputs.cache-hit }}' 
 
       # - name: Cache codecov
       #   id: codecov1
