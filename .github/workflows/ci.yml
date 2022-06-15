@@ -21,5 +21,8 @@ jobs:
         with:
           name: coverage-${{ github.sha }}.xml
           path: coverage.xml
-      - name: Comment
-        run: "ls ."
+      - name: Cache codecov
+        uses: actions/cache@v3
+        with:
+          path: coverage.xml
+          key: coverage-${{ github.sha }}
