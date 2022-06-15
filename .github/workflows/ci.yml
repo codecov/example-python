@@ -16,8 +16,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Run tests and collect coverage
-        run: pytest --cov app
+      # - name: Run tests and collect coverage
+      #   run: pytest --cov app
       
       - name: Cache codecov
         uses: actions/cache@v3
