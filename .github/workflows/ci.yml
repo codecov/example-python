@@ -16,23 +16,25 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Cache multiple paths
+      # - name: Cache multiple paths
+      #   id: codecov1
+      #   uses: ylemkimon/cache-restore@v2
+      #   with:
+      #     path: coverage.xml
+      #     key: coverage-${{ github.sha }}
+
+      - name: Cache codecov
         id: codecov1
-        uses: ylemkimon/cache-restore@v2
+        uses: actions/cache@v3
         with:
           path: coverage.xml
           key: coverage-${{ github.sha }}
-      
+
+
       - name: Use jq to process JSON output from above command
         run: |
           echo '${{ steps.codecov1.outputs.cache-hit }}' 
 
-      # - name: Cache codecov
-      #   id: codecov1
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: coverage.xml
-      #     key: coverage-${{ github.sha }}
 
       - name: Comment
         run: "ls ."
