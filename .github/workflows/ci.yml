@@ -28,12 +28,12 @@ jobs:
 
       - name: Run tests and collect coverage
         id: codecov2
-        if: steps.codecov1.outcome.cache-hit != 'true' 
+        if: steps.codecov1.outcome.cache-hit == 'false' 
         run: pytest --cov app
     
       - name: Cache codecov
         id: codecov3
-        if: steps.codecov1.outcome.cache-hit != 'true'
+        if: steps.codecov1.outcome.cache-hit == 'false'
         uses: actions/cache@v3
         with:
           path: coverage.xml
