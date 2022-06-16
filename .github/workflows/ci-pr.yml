@@ -21,11 +21,11 @@ jobs:
       - uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
           command: cp
-          source: s3://infra-prod-docs/soramitsu/iroha2/codecov/coverage.xml
+          source: s3://infra-prod-docs/hyperledger/iroha2/codecov/coverage.xml
           destination: ./coverage.xml
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-1
+          aws_region: eu-west-1
 
       # - name: Restore cache for pull requests
       #   if: github.event_name == 'pull_request'
@@ -50,10 +50,10 @@ jobs:
         with:
           command: cp
           source: coverage.xml
-          destination: s3://infra-prod-docs/soramitsu/iroha2/codecov/coverage.xml
+          destination: s3://infra-prod-docs/hyperledger/iroha2/codecov/coverage.xml
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-1
+          aws_region: eu-west-1
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3

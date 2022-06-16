@@ -18,25 +18,42 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Restore cache for push
-        if: github.event_name == 'push'
-        id: restore_cache_push
-        uses: actions/cache@v3
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
-          path: coverage.xml
-          key: coverage-${{ github.sha }}
+          command: cp
+          source: s3://infra-prod-docs/hyperledger/iroha2/codecov/coverage.xml
+          destination: ./coverage.xml
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: eu-west-1
+
+      # - name: Restore cache for push
+      #   if: github.event_name == 'push'
+      #   id: restore_cache_push
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: coverage.xml
+      #     key: coverage-${{ github.sha }}
 
       - name: Run tests and collect coverage
         if: steps.restore_cache_push.outputs.cache-hit != 'true'
         run: pytest --cov app
 
-      - name: Cache codecov for push
-        if: steps.restore_cache_push.outputs.cache-hit != 'true'
-        uses: actions/cache@v3
-        with:
-          path: coverage.xml
-          key: coverage-${{ github.sha }}
+      # - name: Cache codecov for push
+      #   if: steps.restore_cache_push.outputs.cache-hit != 'true'
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: coverage.xml
+      #     key: coverage-${{ github.sha }}
     
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        with:
+          command: cp
+          source: s3://infra-prod-docs/hyperledger/iroha2/codecov/coverage.xml
+          destination: ./coverage.xml
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: eu-west-1
       
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
