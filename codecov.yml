@@ -3,8 +3,8 @@ coverage:
     project:
       default:
         branches:
-          - !test-exclude-branches
+          - "!test-exclude-branches"
     patch:
       default:
         branches:
-          - !main
+          - "!main"
