@@ -1,0 +1,10 @@
+coverage:
+  status:
+    project:
+      default:
+        branches:
+          - !test-exclude-branches
+    patch:
+      default:
+        branches:
+          - !main
