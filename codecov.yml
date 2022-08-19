@@ -3,7 +3,7 @@ coverage:
     project:
       default:
         branches:
-          - "!test-exclude-branches"
+          - "!test-exclude-branches-3"
     patch:
       default:
         branches:
