@@ -1,0 +1,3 @@
+profilling:
+  critical_files_paths:
+    - app/calculator.py
