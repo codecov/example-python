@@ -17,10 +17,10 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          override_commit: ${{ env.GITHUB_SHA }}
+          override_commit: ${{ GITHUB_SHA }}
           verbose: true
       - name: Upload coverage to Codecov no paren
         uses: codecov/codecov-action@v3
         with:
-          override_commit: $env.GITHUB_SHA
+          override_commit: $GITHUB_SHA
           verbose: true
