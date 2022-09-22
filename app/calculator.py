@@ -16,5 +16,5 @@ class Calculator:
     def power(x, y):
         return x**y
 
-    def zero():
-        return 0
+    def one():
+        return 1
