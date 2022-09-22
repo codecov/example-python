@@ -1,3 +1,6 @@
 profiling:
   critical_files_paths:
     - app/calculator.py
+
+comment:
+  show_critical_paths: true
