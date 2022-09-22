@@ -1,4 +1,5 @@
 class Calculator:
+
     def add(x, y):
         return x + y
 
@@ -12,9 +13,3 @@ class Calculator:
         if y == 0:
             return 'Cannot divide by 0'
         return x * 1.0 / y
-
-    def power(x, y):
-        return x**y
-
-    def one():
-        return 1
