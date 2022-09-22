@@ -2,7 +2,7 @@ name: Workflow for Codecov example-python
 on: [push, pull_request]
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,3 +16,10 @@ jobs:
         run: pytest --cov app
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        with:
+          verbose: true
+      - name: Upload coverage to Codecov with override
+        uses: codecov/codecov-action@v3
+        with:
+          override_commit: ${{ env.GITHUB_SHA }}
+          verbose: true
