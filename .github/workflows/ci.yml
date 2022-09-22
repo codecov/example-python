@@ -21,5 +21,5 @@ jobs:
       - name: Upload coverage to Codecov with override
         uses: codecov/codecov-action@v3
         with:
-          override_commit: ${{ env.GITHUB_SHA }}
+          override_commit: ${GITHUB_SHA}
           verbose: true
