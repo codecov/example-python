@@ -16,3 +16,6 @@ class Calculator:
 
     def add2(x,y,z):
         return x+y+z
+
+    def subtract2(x, y,z):
+        return x - y - z
