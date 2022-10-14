@@ -7,7 +7,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          set-safe-directory: 'meow'
+          set-safe-directory: true
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
