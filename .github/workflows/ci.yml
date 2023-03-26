@@ -15,4 +15,4 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: ./dist/bin/codecov.js

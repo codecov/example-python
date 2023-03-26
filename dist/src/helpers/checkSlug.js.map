@@ -1,0 +1,1 @@
+{"version":3,"file":"checkSlug.js","sourceRoot":"","sources":["../../../src/helpers/checkSlug.ts"],"names":[],"mappings":";;;AAAA,SAAgB,SAAS,CAAC,IAAY;IACpC,IAAI,IAAI,KAAK,EAAE,IAAI,CAAC,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,EAAE;QACpC,OAAO,KAAK,CAAA;KACb;IACD,OAAO,IAAI,CAAA;AACb,CAAC;AALD,8BAKC"}
