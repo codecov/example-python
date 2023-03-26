@@ -15,32 +15,27 @@ function _getBuild(inputs) {
     const { args, environment: envs } = inputs;
     return args.build || envs.GITHUB_RUN_ID || '';
 }
-function _getJobURL(inputs) {
+async function _getJobURL(inputs) {
     (0, logger_1.info)('the url');
     (0, logger_1.info)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`);
-    (0, undici_1.request)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`).then((res) => {
-        (0, logger_1.info)('res');
-        (0, logger_1.info)(`${res}`);
-        (0, logger_1.info)('statusCode');
-        (0, logger_1.info)(`${res.statusCode}`);
-        if (res.statusCode !== 200) {
-            return '';
-        }
-        res.body.text().then((data) => {
-            (0, logger_1.info)('data');
-            (0, logger_1.info)(`${data}`);
-            return data;
-        });
-    });
-    return '';
+    const res = await (0, undici_1.request)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`);
+    (0, logger_1.info)('res');
+    (0, logger_1.info)(`${res}`);
+    (0, logger_1.info)('statusCode');
+    (0, logger_1.info)(`${res.statusCode}`);
+    if (res.statusCode !== 200) {
+        return '';
+    }
+    const data = await res.body.text();
+    (0, logger_1.info)('data');
+    (0, logger_1.info)(`${data}`);
+    return data;
 }
-function _getBuildURL(inputs) {
+async function _getBuildURL(inputs) {
     const { environment: envs } = inputs;
-    const jobURL = _getJobURL(inputs);
-    (0, logger_1.info)('jobURL');
-    (0, logger_1.info)(`${jobURL}`);
-    if (jobURL !== '') {
-        return jobURL;
+    const url = await _getJobURL(inputs);
+    if (url !== '') {
+        return url;
     }
     return (`${envs.GITHUB_SERVER_URL}/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}`);
 }
@@ -109,11 +104,11 @@ function _getSlug(inputs) {
         return args.slug;
     return envs.GITHUB_REPOSITORY || '';
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),
-        buildURL: _getBuildURL(inputs),
+        buildURL: await _getBuildURL(inputs),
         commit: _getSHA(inputs),
         job: _getJob(inputs.environment),
         pr: _getPR(inputs),

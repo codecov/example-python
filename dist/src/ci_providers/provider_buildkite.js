@@ -107,7 +107,7 @@ function _getSlug(inputs) {
  * @param {args: {}, envs: {}} inputs an object of arguments and enviromental variable key/value pairs
  * @returns {{ branch: string, build: string, buildURL: string, commit: string, job: string, pr: string, service: string, slug: string }}
  */
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

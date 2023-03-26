@@ -51,7 +51,7 @@ function _getSlug(inputs) {
             .replace(/\.git$/, '')
         : ''));
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

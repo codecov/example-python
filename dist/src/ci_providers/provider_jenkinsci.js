@@ -50,7 +50,7 @@ function _getSlug(inputs) {
         return args.slug;
     return (0, git_1.parseSlugFromRemoteAddr)('') || '';
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

@@ -49,7 +49,7 @@ function _getPR(inputs) {
 function _getJob(envs) {
     return envs.CIRCLE_NODE_INDEX || '';
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

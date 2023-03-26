@@ -41,7 +41,7 @@ function _getSlug(inputs) {
         return args.slug;
     return envs.DRONE_REPO || '';
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

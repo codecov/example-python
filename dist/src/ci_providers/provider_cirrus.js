@@ -42,7 +42,7 @@ function _getSlug(inputs) {
     const { args, environment: envs } = inputs;
     return (0, provider_1.setSlug)(args.slug, envs.CIRRUS_REPO_OWNER, envs.CIRRUS_REPO_NAME);
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

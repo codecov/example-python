@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.setSlug = exports.walkProviders = exports.detectProvider = void 0;
 const ci_providers_1 = __importDefault(require("../ci_providers"));
 const logger_1 = require("../helpers/logger");
-function detectProvider(inputs, hasToken = false) {
+async function detectProvider(inputs, hasToken = false) {
     const { args } = inputs;
     let serviceParams;
     //   check if we have a complete set of manual overrides (slug, SHA)
@@ -23,7 +23,8 @@ function detectProvider(inputs, hasToken = false) {
     }
     //   loop though all providers
     try {
-        return { ...walkProviders(inputs), ...serviceParams };
+        const serviceParams = await walkProviders(inputs);
+        return { ...serviceParams, ...serviceParams };
     }
     catch (error) {
         //   if fails, display message explaining failure, and explaining that SHA and slug need to be set as args
@@ -37,7 +38,7 @@ function detectProvider(inputs, hasToken = false) {
     return serviceParams;
 }
 exports.detectProvider = detectProvider;
-function walkProviders(inputs) {
+async function walkProviders(inputs) {
     for (const provider of ci_providers_1.default) {
         if (provider.detect(inputs.environment)) {
             (0, logger_1.info)(`Detected ${provider.getServiceName()} as the CI provider.`);
@@ -45,7 +46,7 @@ function walkProviders(inputs) {
             for (const envVarName of provider.getEnvVarNames()) {
                 logger_1.UploadLogger.verbose(`     ${envVarName}: ${inputs.environment[envVarName]}`);
             }
-            return provider.getServiceParams(inputs);
+            return await provider.getServiceParams(inputs);
         }
     }
     throw new Error(`Unable to detect provider.`);

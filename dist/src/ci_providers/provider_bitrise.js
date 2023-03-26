@@ -40,7 +40,7 @@ function _getSlug(inputs) {
     const { args } = inputs;
     return args.slug || (0, git_1.parseSlugFromRemoteAddr)('') || '';
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

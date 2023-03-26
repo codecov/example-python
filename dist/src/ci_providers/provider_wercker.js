@@ -40,7 +40,7 @@ function _getSlug(inputs) {
     const { args, environment: envs } = inputs;
     return (0, provider_1.setSlug)(args.slug, envs.WERCKER_GIT_OWNER, envs.WERCKER_GIT_REPOSITORY);
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

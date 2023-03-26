@@ -43,7 +43,7 @@ function _getPR(inputs) {
 function _getJob() {
     return '';
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

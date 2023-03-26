@@ -46,7 +46,7 @@ function _getSlug(inputs) {
         return args.slug;
     return envs.CI_REPO || '';
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

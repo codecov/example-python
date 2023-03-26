@@ -72,7 +72,7 @@ function _getSlug(inputs) {
         throw new Error(`There was an error getting the slug from git: ${error}`);
     }
 }
-function getServiceParams(inputs) {
+async function getServiceParams(inputs) {
     return {
         branch: _getBranch(inputs),
         build: _getBuild(inputs),

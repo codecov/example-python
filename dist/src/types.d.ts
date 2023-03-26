@@ -44,7 +44,7 @@ export interface UploaderInputs {
 export interface IProvider {
     detect: (arg0: UploaderEnvs) => boolean;
     getServiceName: () => string;
-    getServiceParams: (arg0: UploaderInputs) => IServiceParams;
+    getServiceParams: (arg0: UploaderInputs) => Promise<IServiceParams>;
     getEnvVarNames: () => string[];
 }
 export interface IServiceParams {

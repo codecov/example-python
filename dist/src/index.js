@@ -298,7 +298,7 @@ async function main(args) {
     // #endregion
     // #region == Step 7: determine CI provider
     const hasToken = token !== '';
-    const serviceParams = (0, provider_1.detectProvider)(inputs, hasToken);
+    const serviceParams = await (0, provider_1.detectProvider)(inputs, hasToken);
     // #endregion
     // #region == Step 8: either upload or dry-run
     const buildParams = webHelpers.populateBuildParams(inputs, serviceParams);
