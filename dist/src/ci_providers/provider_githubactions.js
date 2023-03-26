@@ -17,7 +17,13 @@ function _getBuild(inputs) {
 }
 async function _getJobURL(inputs) {
     (0, logger_1.info)('the url');
-    const res = await (0, undici_1.request)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`);
+    const url = `https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`;
+    const res = await (0, undici_1.request)(url, {
+        headers: {
+            'User-Agent': 'Awesome-Octocat-App'
+        }
+    });
+    (0, logger_1.info)(`${url}`);
     (0, logger_1.info)('statusCode');
     (0, logger_1.info)(`${res.statusCode}`);
     (0, logger_1.info)('body');
