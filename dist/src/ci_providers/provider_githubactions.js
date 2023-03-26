@@ -16,6 +16,8 @@ function _getBuild(inputs) {
     return args.build || envs.GITHUB_RUN_ID || '';
 }
 function _getJobURL(inputs) {
+    (0, logger_1.info)('the url');
+    (0, logger_1.info)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`);
     (0, undici_1.request)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`).then((res) => {
         (0, logger_1.info)('res');
         (0, logger_1.info)(`${res}`);
