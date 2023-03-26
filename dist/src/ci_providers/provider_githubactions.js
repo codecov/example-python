@@ -24,17 +24,17 @@ async function _getJobURL(inputs) {
         }
     });
     (0, logger_1.info)(`${url}`);
-    (0, logger_1.info)('statusCode');
-    (0, logger_1.info)(`${res.statusCode}`);
-    (0, logger_1.info)('body');
-    (0, logger_1.info)(`${res.body}`);
-    const data = await res.body.text();
-    (0, logger_1.info)('data');
-    (0, logger_1.info)(`${data}`);
     if (res.statusCode !== 200) {
         return '';
     }
-    return data;
+    const data = await res.body.json();
+    const { environment: envs } = inputs;
+    for (const job of data.jobs) {
+        if (job.name == envs.GITHUB_JOB) {
+            return job.html_url;
+        }
+    }
+    return '';
 }
 async function _getBuildURL(inputs) {
     const { environment: envs } = inputs;
