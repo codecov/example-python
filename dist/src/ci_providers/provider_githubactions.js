@@ -17,14 +17,11 @@ function _getBuild(inputs) {
 }
 async function _getJobURL(inputs) {
     (0, logger_1.info)('the url');
-    (0, logger_1.info)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`);
     const res = await (0, undici_1.request)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`);
-    (0, logger_1.info)('res');
-    (0, logger_1.info)(`${res}`);
     (0, logger_1.info)('statusCode');
     (0, logger_1.info)(`${res.statusCode}`);
-    (0, logger_1.info)('headers');
-    (0, logger_1.info)(`${res.headers}`);
+    (0, logger_1.info)('body');
+    (0, logger_1.info)(`${res.body}`);
     const data = await res.body.text();
     (0, logger_1.info)('data');
     (0, logger_1.info)(`${data}`);
