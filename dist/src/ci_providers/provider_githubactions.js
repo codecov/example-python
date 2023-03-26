@@ -17,10 +17,16 @@ function _getBuild(inputs) {
 }
 function _getJobURL(inputs) {
     (0, undici_1.request)(`https://api.github.com/repos/${_getSlug(inputs)}/actions/runs/${_getBuild(inputs)}/jobs`).then((res) => {
+        (0, logger_1.info)('res');
+        (0, logger_1.info)(`${res}`);
+        (0, logger_1.info)('statusCode');
+        (0, logger_1.info)(`${res.statusCode}`);
         if (res.statusCode !== 200) {
             return '';
         }
         res.body.text().then((data) => {
+            (0, logger_1.info)('data');
+            (0, logger_1.info)(`${data}`);
             return data;
         });
     });
@@ -29,6 +35,8 @@ function _getJobURL(inputs) {
 function _getBuildURL(inputs) {
     const { environment: envs } = inputs;
     const jobURL = _getJobURL(inputs);
+    (0, logger_1.info)('jobURL');
+    (0, logger_1.info)(`${jobURL}`);
     if (jobURL !== '') {
         return jobURL;
     }
