@@ -23,12 +23,13 @@ async function _getJobURL(inputs) {
     (0, logger_1.info)(`${res}`);
     (0, logger_1.info)('statusCode');
     (0, logger_1.info)(`${res.statusCode}`);
+    (0, logger_1.info)('headers');
+    (0, logger_1.info)(`${res.headers}`);
+    (0, logger_1.info)('data');
+    const data = await res.body.text();
     if (res.statusCode !== 200) {
         return '';
     }
-    const data = await res.body.text();
-    (0, logger_1.info)('data');
-    (0, logger_1.info)(`${data}`);
     return data;
 }
 async function _getBuildURL(inputs) {
