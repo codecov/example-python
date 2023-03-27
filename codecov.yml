@@ -2,5 +2,14 @@ profiling:
   critical_files_paths:
     - app/calculator.py
 
-comment:
-  show_critical_paths: true
+comment: false
+
+flag_mangement:
+  individual_flags:
+    - name: backend
+      after_n_builds: 2
+      statuses:
+        - type: project
+          target: 20%
+        - type: patch
+          target: 100%
