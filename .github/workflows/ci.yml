@@ -16,3 +16,13 @@ jobs:
         run: pytest --cov app
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        with:
+          flags: backend
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          flags: backend
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          flags: backend

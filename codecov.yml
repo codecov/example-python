@@ -4,3 +4,8 @@ profiling:
 
 comment:
   show_critical_paths: true
+
+flag_mangement:
+  individual_flags:
+    - name: backend
+      after_n_builds: 2
