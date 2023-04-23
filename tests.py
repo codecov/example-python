@@ -12,5 +12,6 @@ class TestMethods(unittest.TestCase):
         self.assertTrue(awesome.test_if(1))
 
 
+        
 if __name__ == '__main__':
     unittest.main()
