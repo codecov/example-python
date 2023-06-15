@@ -20,7 +20,7 @@ jobs:
         run: codecovcli static-analysis --token=e3b898c3ce71efa4639457a8e34c58cd718ef910
       - name: Label analysis
         run: |
-          BASE_COMMIT=$(git merge-base ${{ github.sha }} origin/main)
+          BASE_COMMIT=$(git merge-base ${{ github.sha }} main)
           codecovcli label-analysis --token=e3b898c3ce71efa4639457a8e34c58cd718ef910 --base-sha=${BASE_COMMIT}
       - name:
         run: codecovcli --codecov-yml-path=codecov_cli.yml do-upload --plugin pycoverage --plugin compress-pycoverage --flag smart-tests --token=e2800f80-c8a1-4b0b-b267-f2525e35b757 --fail-on-error
