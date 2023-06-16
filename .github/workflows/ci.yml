@@ -14,5 +14,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
         run: pytest --cov app
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+      - name: Upload with new uploader
+        run: |
+          codecovcli create-commit -t e2800f80-c8a1-4b0b-b267-f2525e35b757
+          codecovcli create-report -t e2800f80-c8a1-4b0b-b267-f2525e35b757
+          codecovcli do-upload -t e2800f80-c8a1-4b0b-b267-f2525e35b757
