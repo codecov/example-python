@@ -4,7 +4,7 @@ iniconfig==2.0.0
 packaging==23.1
 pluggy==1.0.0
 py==1.11.0
-pyparsing==3.0.9
+pyparsing==3.1.0
 pytest==7.3.1
 pytest-cov==4.0.0
 tomli==2.0.1
