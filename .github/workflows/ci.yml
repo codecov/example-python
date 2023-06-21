@@ -12,7 +12,14 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Install codecov cli
+        run: pip install codecov-cli
       - name: Run tests and collect coverage
         run: pytest --cov app
+
+      - name: Create a commit on Codecov
+        run: codecovcli create-commit -t e2800f80-c8a1-4b0b-b267-f2525e35b757
+      - name: Create a report on Codecov
+        run: codecovcli create-report -t e2800f80-c8a1-4b0b-b267-f2525e35b757
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: codecovcli do-upload -t e2800f80-c8a1-4b0b-b267-f2525e35b757
