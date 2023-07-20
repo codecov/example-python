@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: give wrapper permission
-        run: chmod +x codecov_wrapper.sh
+        run: chmod +x app/codecov_wrapper.sh
       - name: run tests by bazel and generate coverage
         run: bazel coverage --run_under //app:codecov_wrapper.sh //app:test_calculator --test_output=all
 
