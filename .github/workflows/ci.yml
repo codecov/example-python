@@ -16,5 +16,8 @@ jobs:
       - name: give wrapper permission
         run: chmod +x app/codecov_wrapper.sh
       - name: run tests by bazel and generate coverage
-        run: bazel coverage --run_under //app:codecov_wrapper.sh //app:test_calculator --test_output=all
+        run: 
+        virtualenv venv |
+	      . venv/bin/activate && python -m pip install --upgrade pip |
+        bazel coverage --run_under //app:codecov_wrapper.sh //app:test_calculator --test_output=all
 
