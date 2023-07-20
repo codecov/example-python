@@ -4,8 +4,8 @@
 #     foo pytest --cov bar/src/a.py bar/src/b.py
 # We want to run that `pytest` command unmodified, as below:
 "$@"
-source venv/bin/activate
-pip install codecov-cli
+codecovcli create-commit
+
 # Now we want to run `codecovcli`
 # CODECOV_TOKEN=<hardcoded per project :(> codecovcli create-commit
 # CODECOV_TOKEN=<hardcoded per project :(> codecovcli create-report

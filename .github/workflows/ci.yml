@@ -21,5 +21,6 @@ jobs:
           pip install virtualenv
           virtualenv venv
           source venv/bin/activate
+          pip install codecov-cli
           bazel coverage --run_under //app:codecov_wrapper.sh //app:test_calculator --test_output=all
 
