@@ -14,5 +14,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: run tests by bazel and generate coverage
-        run: bazel coverage --run_under //app:codecov_wrapper.sh //app:test_calculator
+        run: bazel coverage --run_under //app:codecov_wrapper.sh //app:test_calculator --test_output=all
 
