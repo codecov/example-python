@@ -18,5 +18,8 @@ jobs:
       - name: run tests by bazel and generate coverage
         run: |
           python -m pip install --upgrade pip
+          pip install virtualenv
+          virtualenv venv
+          source venv/bin/activate
           bazel coverage --run_under //app:codecov_wrapper.sh //app:test_calculator --test_output=all
 
