@@ -13,8 +13,8 @@ mv $COVERAGE_DIR/pylcov.dat $COVERAGE_DIR/lcov.dat
 
 # Get the root of the Git repository
 GIT_DIR="$GIT_DIR"
-codecovcli -v --url http://localhost:8000 create-commit -t dc93f68d-1a9e-4c37-a184-8ec34cd335a2
-codecovcli -v --url http://localhost:8000 create-report -t dc93f68d-1a9e-4c37-a184-8ec34cd335a2
-codecovcli -v --url http://localhost:8000 do-upload -t dc93f68d-1a9e-4c37-a184-8ec34cd335a2 --plugin gcov --plugin pycoverage -s $COVERAGE_DIR
+codecovcli -v create-commit -t 02d15256-c911-4a8e-a642-1685b111da77
+codecovcli -v create-report -t 02d15256-c911-4a8e-a642-1685b111da77
+codecovcli -v do-upload -t 02d15256-c911-4a8e-a642-1685b111da77 --plugin gcov --plugin pycoverage -s $COVERAGE_DIR
 
 
