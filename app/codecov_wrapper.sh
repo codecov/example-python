@@ -9,8 +9,8 @@
 mv $COVERAGE_DIR/pylcov.dat $COVERAGE_DIR/lcov.dat
 
 # uploading coverage
-codecovcli -v --url http://localhost:8000 create-commit -t $CODECOV_TOKEN
-codecovcli -v --url http://localhost:8000 create-report -t $CODECOV_TOKEN
-codecovcli -v --url http://localhost:8000 do-upload -t $CODECOV_TOKEN -s $COVERAGE_DIR
+codecovcli -v create-commit -t $CODECOV_TOKEN
+codecovcli -v create-report -t $CODECOV_TOKEN
+codecovcli -v do-upload -t $CODECOV_TOKEN -s $COVERAGE_DIR
 
 
