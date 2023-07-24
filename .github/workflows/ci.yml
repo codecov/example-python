@@ -22,5 +22,5 @@ jobs:
           virtualenv venv
           source venv/bin/activate
           pip install codecov-cli
-          bazel coverage --run_under //app:codecov_wrapper.sh  --test_output=all --action_env=GIT_DIR=${PWD}/$(git rev-parse --git-dir)  --combined_report=lcov //app:test_calculator
+          bazel coverage --run_under //app:codecov_wrapper.sh  --test_output=all --action_env=GIT_DIR=${PWD}/$(git rev-parse --git-dir) --action_env=CODECOV_TOKEN=${{ CODECOV_TOKEN }} --combined_report=lcov //app:test_calculator
 
