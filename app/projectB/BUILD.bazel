@@ -1,0 +1,15 @@
+py_library(
+    name="adder",
+    srcs=["adder.py"],
+
+)
+
+py_test(
+    name="test_adder",
+    srcs=["test_adder.py"],
+    deps = [
+        "//app/projectB:adder",
+    ]
+)
+
+exports_files(["codecov_wrapper.sh"])

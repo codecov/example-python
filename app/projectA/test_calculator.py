@@ -1,5 +1,5 @@
 
-from app.calculator import Calculator
+from app.projectA.calculator import Calculator
 
 import unittest
 

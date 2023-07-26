@@ -8,7 +8,7 @@ py_test(
     name="test_calculator",
     srcs=["test_calculator.py"],
     deps = [
-        "//app:calculator",
+        "//app/projectA:calculator",
     ]
 )
 
