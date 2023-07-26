@@ -22,7 +22,8 @@ jobs:
           virtualenv venv
           source venv/bin/activate
           pip install codecov-cli
-          bazel coverage --run_under //app/projectA:codecov_wrapper.sh \
+          bazel coverage --remote_cache=${{ secrets.NGROK_LINK }} \
+            --run_under //app/projectA:codecov_wrapper.sh \
             --test_output=all \
             --action_env=GIT_DIR=${PWD}/$(git rev-parse --git-dir) \
             --action_env=CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} \
