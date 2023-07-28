@@ -23,6 +23,8 @@ jobs:
           source venv/bin/activate
           pip install codecov-cli
           echo "$GCP_CREDENTIALS" > service.json
+          echo "-----"
+          bazel build //app/...
           bazel coverage --remote_cache=https://storage.googleapis.com/bazel-test-dana \
             --google_credentials=service.json
             --run_under //app/projectA:codecov_wrapper.sh \
