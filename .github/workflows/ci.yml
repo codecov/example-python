@@ -4,15 +4,33 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - uses: bazelbuild/setup-bazelisk@v2
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Python 3.10
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests and collect coverage
-        run: pytest --cov app
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+      - name: give wrapper permission
+        run: chmod +x app/projectA/codecov_wrapper.sh
+      - name: run tests by bazel and generate coverage
+        run: |
+          python -m pip install --upgrade pip
+          pip install virtualenv
+          virtualenv venv
+          source venv/bin/activate
+          pip install codecov-cli
+          echo "$GCP_CREDENTIALS" > service.json
+          echo "-----"
+          bazel build //app/...
+          bazel coverage --run_under //app/projectA:codecov_wrapper.sh \
+            --test_output=all \
+            --action_env=GIT_DIR=${PWD}/$(git rev-parse --git-dir) \
+            --action_env=CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} \
+            --remote_cache=https://storage.googleapis.com/bazel-test-dana \
+            --google_credentials=service.json \
+            --combined_report=lcov //app/...
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}

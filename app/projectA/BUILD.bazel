@@ -1,0 +1,15 @@
+py_library(
+    name="calculator",
+    srcs=["calculator.py"],
+
+)
+
+py_test(
+    name="test_calculator",
+    srcs=["test_calculator.py"],
+    deps = [
+        "//app/projectA:calculator",
+    ]
+)
+
+exports_files(["codecov_wrapper.sh"])
