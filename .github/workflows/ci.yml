@@ -22,7 +22,7 @@ jobs:
           virtualenv venv
           source venv/bin/activate
           pip install codecov-cli
-          echo ${{secrets.GCP_CREDENTIALS}} > service.json
+          echo "$GCP_CREDENTIALS" > service.json
           bazel coverage --remote_cache=https://storage.googleapis.com/bazel-test-dana \
             --google_credentials=service.json
             --run_under //app/projectA:codecov_wrapper.sh \
@@ -30,4 +30,5 @@ jobs:
             --action_env=GIT_DIR=${PWD}/$(git rev-parse --git-dir) \
             --action_env=CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} \
             --combined_report=lcov //app/...
-
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
