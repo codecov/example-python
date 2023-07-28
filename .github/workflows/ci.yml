@@ -25,8 +25,7 @@ jobs:
           echo "$GCP_CREDENTIALS" > service.json
           echo "-----"
           bazel build //app/...
-          bazel coverage
-            --run_under //app/projectA:codecov_wrapper.sh \
+          bazel coverage --run_under //app/projectA:codecov_wrapper.sh \
             --test_output=all \
             --action_env=GIT_DIR=${PWD}/$(git rev-parse --git-dir) \
             --action_env=CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} \
