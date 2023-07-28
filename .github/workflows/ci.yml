@@ -25,8 +25,7 @@ jobs:
           echo "$GCP_CREDENTIALS" > service.json
           echo "-----"
           bazel build //app/...
-          bazel coverage --remote_cache=https://storage.googleapis.com/bazel-test-dana \
-            --google_credentials=service.json
+          bazel coverage
             --run_under //app/projectA:codecov_wrapper.sh \
             --test_output=all \
             --action_env=GIT_DIR=${PWD}/$(git rev-parse --git-dir) \
