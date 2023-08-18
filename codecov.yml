@@ -4,9 +4,18 @@ profiling:
 
 comment:
   show_critical_paths: true
+  layout: "header, diff, flags, components"
+
 coverage:
   status:
     project:
       default:
         target: 100%
         threshold: 1%
+
+component_management:
+  individual_components:
+    - component_id: app  # this is an identifier that should not be changed
+      name: app  # this is a display name, and can be changed freely
+      paths:
+        - app
