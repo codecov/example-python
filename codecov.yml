@@ -14,8 +14,13 @@ coverage:
         threshold: 1%
 
 component_management:
+ component_management:
   individual_components:
-    - component_id: app  # this is an identifier that should not be changed
-      name: app  # this is a display name, and can be changed freely
+    - component_id: app-calculator  # this is an identifier that should not be changed
+      name: calculator  # this is a display name, and can be changed freely
       paths:
-        - app
+        - app/calculator/
+    - component_id: app-smiles  # this is an identifier that should not be changed
+      name: smiles  # this is a display name, and can be changed freely
+      paths:
+        - app/smiles/
