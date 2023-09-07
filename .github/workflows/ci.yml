@@ -28,7 +28,11 @@ jobs:
       - name: Label Analysis
         run: |
           BASE_SHA=$(git rev-parse HEAD^)
-          codecovcli label-analysis --token ${{ secrets.CODECOV_STATIC_TOKEN }} --base-sha=$BASE_SHA
+          TESTS=$(codecovcli label-analysis --token ${{ secrets.CODECOV_STATIC_TOKEN }} --base-sha=$BASE_SHA --dry-run)
+          echo $TESTS
+      - name: Run tests and coverage
+        run: |
+          echo $TESTS
       - name: Upload to Codecov
         run: |
           codecovcli --codecov-yml-path=codecov.yml do-upload \
