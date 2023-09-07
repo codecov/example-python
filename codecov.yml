@@ -11,3 +11,6 @@ cli:
   plugins:
     pycoverage:
       report_type: "json"
+  runners:
+    python:
+      coverage_root: "app"
