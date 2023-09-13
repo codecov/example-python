@@ -16,3 +16,5 @@ jobs:
           pip install codecov-cli
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4.0.0-beta.1
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
