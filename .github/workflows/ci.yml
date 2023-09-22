@@ -6,14 +6,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+      - name: Run ATS
+        uses: codecov/codecov-ats@v0
+        env:
+          CODECOV_STATIC_TOKEN: ${{ secrets.CODECOV_STATIC_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
-        run: pytest --cov app
+        run: pytest --cov app ${{ env.CODECOV_ATS_TESTS_TO_RUN }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4-beta
         env:
