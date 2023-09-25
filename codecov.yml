@@ -14,7 +14,7 @@ flag_management:
         - type: "project"
         - type: "patch"
         
-cli:
-  plugins:
-    pycoverage:
-      report_type: "json"
+#cli:
+  #plugins:
+    #pycoverage:
+      #report_type: "json"
