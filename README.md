@@ -1,4 +1,4 @@
-# [Codecov](https://codecov.io) Python Example
+# [SELF-HOSTED Codecov](https://codecov.cloud.remarkable.engineering) Python Example
 [![codecov](https://codecov.cloud.remarkable.engineering/github/naesheimas/example-python/branch/main/graph/badge.svg?token=tkq655ROg3)](https://codecov.cloud.remarkable.engineering/github/naesheimas/example-python)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python?ref=badge_shield)
 
@@ -7,7 +7,7 @@ This example repository shows how Codecov can be integrated with a simple python
 For more information, please see the links below.
 
 ## Links
-- [Quick Start](https://docs.codecov.com/docs/quick-start)
+- [Quick Start](https://codecov.cloud.remarkable.engineering)
 - [GitHub Tutorial](https://docs.codecov.com/docs/github-tutorial)
 - [Community Boards](https://community.codecov.io)
 - [Support](https://codecov.io/support)
