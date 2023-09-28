@@ -19,5 +19,7 @@ jobs:
         with:
           url: https://codecov.cloud.remarkable.engineering
           token: ${{ secrets.CODECOV_TOKEN }}
+          slug: naesheimas/example-python
+          verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
