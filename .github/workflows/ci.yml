@@ -16,5 +16,8 @@ jobs:
         run: pytest --cov app
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        with:
+          url: https://codecov.cloud.remarkable.engineering
+          token: ${{ secrets.CODECOV_TOKEN }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
