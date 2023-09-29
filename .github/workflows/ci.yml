@@ -15,7 +15,7 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4-beta
         with:
           # url: https://codecov.cloud.remarkable.engineering
           token: ${{ secrets.CODECOV_TOKEN }}
