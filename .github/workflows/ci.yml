@@ -15,11 +15,11 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4-beta
+        uses: codecov/codecov-action@v3
         with:
-          url: https://codecov.cloud.remarkable.engineering
+          # url: https://codecov.cloud.remarkable.engineering
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: naesheimas/example-python
+          # slug: naesheimas/example-python
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
