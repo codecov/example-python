@@ -1,5 +1,8 @@
 class Calculator:
-
+    def power(x, y):
+        if y >1:
+            return x * power(x,y-1)
+    
     def add(x, y):
         return x + y
 
