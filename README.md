@@ -14,5 +14,6 @@ For more information, please see the links below.
 - [Documentation](https://docs.codecov.io)
 
 
+
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fexample-python?ref=badge_large)
