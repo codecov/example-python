@@ -18,3 +18,5 @@ jobs:
         uses: codecov/codecov-action@v4-beta
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name:
+        run: echo "$GITHUB_REPOSITORY" 
