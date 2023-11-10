@@ -16,6 +16,7 @@ jobs:
       - name: Run ATS
         uses: codecov/codecov-ats@9b308e97443e8421bcdf4377da6c34b3ca235601
         env:
+          CODECOV_STATIC_TOKEN: ${{ secrets.CODECOV_STATIC_TOKEN }}
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run tests and collect coverage
         run: pytest --cov app
