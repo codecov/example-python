@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run ATS
-        uses: codecov/codecov-ats@155cfddc632159543ee62e5d7f90f49478ac81b7
+        uses: codecov/codecov-ats@9b308e97443e8421bcdf4377da6c34b3ca235601
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run tests and collect coverage
