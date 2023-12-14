@@ -29,3 +29,8 @@ def test_divide():
     assert Calculator.divide(0, 2.0) == 0
     assert Calculator.divide(-4, 2.0) == -2.0
     # assert Calculator.divide(2.0, 0.0) == 'Cannot divide by 0'
+
+def test_exponent():
+    assert Calculator.exponent(2, 2) == 4
+    assert Calculator.exponent(3, 2) == 9
+    assert Calculator.exponent(5, 2) == 25
