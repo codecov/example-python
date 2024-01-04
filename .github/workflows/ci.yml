@@ -21,3 +21,5 @@ jobs:
         uses: codecov/codecov-action@v4-beta
         with:
           verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
