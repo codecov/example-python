@@ -22,4 +22,4 @@ jobs:
       - name: Upload coverage to Codecov
         run: codecovcli -v -u ${{ secrets.CODECOV_STAGING_API_URL }} do-upload --report-type test_results --file testresults.junit.xml
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN_STAGING }}
