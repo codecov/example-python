@@ -22,11 +22,12 @@ jobs:
 
       - name: Install CLI
         run: pip install --no-cache-dir git+https://github.com/codecov/codecov-cli.git@joseph/test-results-staging
-      - name: Upload test results to Codecov
-        run: codecovcli -v -u ${{ secrets.CODECOV_STAGING_API_URL }} do-upload --report-type test_results --file testresults.xml
+
+      - name: Upload coverage to Codecov
+        run: codecovcli -v -u ${{ secrets.CODECOV_STAGING_API_URL }} upload-process
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN_STAGING }}
-      - name: Upload coverage to Codecov
-        run: codecovcli -v -u ${{ secrets.CODECOV_STAGING_API_URL }} do-upload
+      - name: Upload test results to Codecov
+        run: codecovcli -v -u ${{ secrets.CODECOV_STAGING_API_URL }} do-upload --report-type test_results --file testresults.xml
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN_STAGING }}
