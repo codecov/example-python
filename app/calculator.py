@@ -28,3 +28,6 @@ class Calculator:
             x *= x
             e >>= 1
         return result
+    
+    def minus(x):
+        return -x
