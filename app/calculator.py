@@ -1,5 +1,3 @@
-#hi
-
 class Calculator:
 
     def add(x, y):
