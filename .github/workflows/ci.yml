@@ -14,17 +14,13 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run ATS
-        uses: codecov/codecov-ats@v0
-        env:
-          CODECOV_STATIC_TOKEN: ${{ secrets.CODECOV_STATIC_TOKEN }}
-          CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }}
+
       - name: Run tests and collect coverage
-        run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
+        run: pytest --cov app --junitxml=reportme.xml
+
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4-beta
-        with:
-          flags: smart-tests
-          verbose: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          curl -Os https://cli.codecov.io/v0.4.6/linux/codecov
+          chmod u+x codecov
+
+          ./codecov -v upload-process -f reportme.xml -t ${{ secrets.CODECOV_TOKEN }} --report-type test_results
