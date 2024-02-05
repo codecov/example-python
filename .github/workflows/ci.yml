@@ -25,3 +25,4 @@ jobs:
           chmod u+x codecov
 
           ./codecov -v upload-process -f reportme.xml -t ${{ secrets.CODECOV_TOKEN }} --report-type test_results
+          ./codecov -v upload-process -t ${{ secrets.CODECOV_TOKEN }}
