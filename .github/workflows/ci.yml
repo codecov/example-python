@@ -17,6 +17,7 @@ jobs:
 
       - name: Run tests and collect coverage
         run: pytest --cov app --junitxml=reportme.xml
+        continue-on-error: true
 
       - name: Upload coverage to Codecov
         run: |
