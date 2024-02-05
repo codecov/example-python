@@ -23,9 +23,12 @@ jobs:
           curl -Os https://cli.codecov.io/v0.4.6/linux/codecov
           chmod u+x codecov
 
-          ./codecov --auto-load-params-from GithubActions create-commit -Z
-          ./codecov --auto-load-params-from GithubActions create-report -Z
-          ./codecov --auto-load-params-from GithubActions do-upload -Z
+          #./codecov --auto-load-params-from GithubActions create-commit -Z
+          #./codecov --auto-load-params-from GithubActions create-report -Z
+          #./codecov --auto-load-params-from GithubActions do-upload -Z
+          ./codecov create-commit -Z --git-service github
+          ./codecov create-report -Z --git-service github
+          ./codecov do-upload -Z --git-service github
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
