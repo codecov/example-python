@@ -3,7 +3,9 @@ on: [push, pull_request]
 jobs:
   run:
     runs-on: ubuntu-latest
-    container: python:3.10
+    container:
+      image: python:3.10
+      options: --user root
     steps:
       - name: Checkout
         uses: actions/checkout@v4
