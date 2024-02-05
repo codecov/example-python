@@ -3,6 +3,53 @@ on: [push, pull_request]
 jobs:
   run:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests and collect coverage
+        run: pytest --cov app
+
+      - name: Upload coverage to Codecov using uploader
+        run: |
+          curl -Os https://uploader.codecov.io/v0.7.1/linux/codecov
+          chmod u+x codecov
+
+          ./codecov -Z -v
+          rm ./codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload coverage to Codecov using CLI
+        run: |
+          curl -Os https://cli.codecov.io/v0.4.6/linux/codecov
+          chmod u+x codecov
+
+          #./codecov --auto-load-params-from GithubActions create-commit -Z
+          #./codecov --auto-load-params-from GithubActions create-report -Z
+          #./codecov --auto-load-params-from GithubActions do-upload -Z
+          ./codecov -v create-commit -Z --git-service github
+          ./codecov -v create-report -Z --git-service github
+          ./codecov -v do-upload -Z --git-service github
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          verbose: true
+          fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  run-docker:
+    runs-on: ubuntu-latest
     container:
       image: python:3.10
       options: --user root
