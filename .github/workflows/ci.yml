@@ -18,6 +18,16 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
 
+      - name: Upload coverage to Codecov using uploader
+        run: |
+          curl -Os https://uploader.codecov.io/v0.7.1/linux/codecov
+          chmod u+x codecov
+
+          ./codecov -Z -v
+          rm ./codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Upload coverage to Codecov using CLI
         run: |
           curl -Os https://cli.codecov.io/v0.4.6/linux/codecov
@@ -26,9 +36,9 @@ jobs:
           #./codecov --auto-load-params-from GithubActions create-commit -Z
           #./codecov --auto-load-params-from GithubActions create-report -Z
           #./codecov --auto-load-params-from GithubActions do-upload -Z
-          ./codecov create-commit -Z --git-service github
-          ./codecov create-report -Z --git-service github
-          ./codecov do-upload -Z --git-service github
+          ./codecov -v create-commit -Z --git-service github
+          ./codecov -v create-report -Z --git-service github
+          ./codecov -v do-upload -Z --git-service github
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
