@@ -70,9 +70,11 @@ jobs:
           echo "2"
           cat .git/config
           echo "3"
+          git config --list
           git config --global --add safe.directory /__w/example-python/example-python
           cat .git/config
           echo "4"
+          git config --list
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
