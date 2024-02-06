@@ -68,6 +68,8 @@ jobs:
           echo "1"
           whoami
           echo "2"
+          cat .git/config
+          echo "3"
           git config --global --add safe.directory /__w/example-python/example-python
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
