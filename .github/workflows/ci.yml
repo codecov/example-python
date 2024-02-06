@@ -64,7 +64,7 @@ jobs:
           fetch-depth: 0
       - name: Set safe
         run: |
-          ls al /__w/example-python
+          ls -al /__w/example-python
           echo "1"
           whoami
           echo "2"
