@@ -62,6 +62,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Set safe
+        run: |
+          ls al /__w/example-python
+          echo "1"
+          whoami
+          echo "2"
+          git config --global --add safe.directory /__w/example-python/example-python
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
