@@ -73,6 +73,7 @@ jobs:
 
       - name: test run subprocess
         run: |
+          git config --global --add safe.directory /__w/example-python/example-python
           python test_root.py
           git rev-parse --show-toplevel
           git remote
