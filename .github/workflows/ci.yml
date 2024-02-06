@@ -20,6 +20,8 @@ jobs:
       - name: test run subprocess
         run: |
           python test_root.py
+          git rev-parse --show-toplevel
+          git remote
       - name: Upload coverage to Codecov using uploader
         run: |
           curl -Os https://uploader.codecov.io/v0.7.1/linux/codecov
@@ -72,6 +74,8 @@ jobs:
       - name: test run subprocess
         run: |
           python test_root.py
+          git rev-parse --show-toplevel
+          git remote
 
       - name: Upload coverage to Codecov using uploader
         run: |
