@@ -70,6 +70,10 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
 
+      - name: test run subprocess
+        run: |
+          python test_root.py
+
       - name: Upload coverage to Codecov using uploader
         run: |
           curl -Os https://uploader.codecov.io/v0.7.1/linux/codecov
