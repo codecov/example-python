@@ -91,7 +91,7 @@ jobs:
           #./codecov --auto-load-params-from GithubActions create-commit -Z
           #./codecov --auto-load-params-from GithubActions create-report -Z
           #./codecov --auto-load-params-from GithubActions do-upload -Z
-          ./codecov -v create-commit -Z --git-service github
+          ./codecov -v create-commit -Z
           ./codecov -v create-report -Z --git-service github
           ./codecov -v do-upload -Z --git-service github
         env:
