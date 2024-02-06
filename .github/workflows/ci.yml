@@ -77,6 +77,8 @@ jobs:
           echo "4"
           git config --list
           echo "4b"
+          pwd
+          echo "4c"
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
