@@ -1,1 +1,5 @@
 __pycache__/
+.coverage
+
+.artifacts/.coverage
+.artifacts/*coverage*

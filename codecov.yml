@@ -10,4 +10,5 @@ flag_management:
 cli:
   plugins:
     pycoverage:
+      path_to_coverage_file: '.artifacts/.coverage'
       report_type: "json"
