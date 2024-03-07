@@ -1,11 +1,30 @@
+coverage:
+  status:
+    changes: false
+    default_rules:
+      flag_coverage_not_uploaded_behavior: "include"
+    patch:
+      default:
+        base: "auto"
+        if_ci_failed: "error"
+        only_pulls: true
+        target: 50
+    project:
+      default:
+        if_ci_failed: "error"
+        only_pulls: true
+        target: "auto"
+
+
+
 flag_management:
+  default_rules:
+    carryforward: true
   individual_flags:
-    - name: smart-tests
-      carryforward: true
-      carryforward_mode: "labels"
-      statuses:
-        - type: "project"
-        - type: "patch"
+    - carryforward: false
+      name: unit
+    - carryforward: false
+      name: python3.10
 
 cli:
   plugins:
