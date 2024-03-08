@@ -3,19 +3,29 @@ from enum import Enum
 from typing import Union
 from app.calculator import Calculator
 
+from functools import partial
 
+# Why wrap the function of the enum in partial?
+# https://stackoverflow.com/a/40339397
 class BinaryOperation(Enum):
-    ADD = Calculator.add
-    SUBTRACT = Calculator.subtract
-    MULTIPLY = Calculator.multiply
-    DIVIDE = Calculator.divide
-    POW = Calculator.pow
-    SQRT = Calculator.sqrt
+    ADD = partial(Calculator.add)
+    SUBTRACT = partial(Calculator.subtract)
+    MULTIPLY = partial(Calculator.multiply)
+    DIVIDE = partial(Calculator.divide)
+    POW = partial(Calculator.pow)
+    SQRT = partial(Calculator.sqrt)
+
+    def __call__(self, *args):
+        return self.value(*args)
 
 
 class UnaryOperation(Enum):
-    SQRT = Calculator.sqrt
-    MINUS = Calculator.minus
+    # TODO: Support Unary +
+    SQRT = partial(Calculator.sqrt)
+    MINUS = partial(Calculator.minus)
+
+    def __call__(self, *args):
+        return self.value(*args)
 
 
 @dataclass
@@ -39,9 +49,10 @@ class BinaryOpNode:
 
 
 Node = Union[BaseNode, BinaryOpNode, UnitaryOpNode]
+Operation = Union[UnaryOperation, BinaryOperation]
 
 
-def evaluate_expression(root: Node):
+def evaluate_expression(root: Node) -> float:
     if root.op is None:
         # BaseNode (no operation)
         return root.lhs
