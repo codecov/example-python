@@ -1,5 +1,5 @@
 import pytest
-from .calculator import Calculator
+from app.calculator import Calculator
 
 
 def test_add():
@@ -46,3 +46,9 @@ def test_pow():
     assert Calculator.pow(4, 2) == 16
     assert Calculator.pow(3, 3) == 27
     assert Calculator.pow(10, 5) == 100000
+
+def test_minus():
+    assert Calculator.minus(12) == -12
+    assert Calculator.minus(-1) == 1
+    assert Calculator.minus(0.5) == -0.5
+    assert Calculator.minus(0) == 0
