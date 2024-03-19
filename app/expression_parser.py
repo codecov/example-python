@@ -94,31 +94,11 @@ def parse_from_string(expression: str) -> Node:
         elif char == " " or char == "\0":
             pass
         else:
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
-            click.echo("Artificial coverage that will be used for testing RCB")
             raise ParsingException("Failed to parse expression", error_index=idx)
         idx += 1
     # Remove the None added to index 0 of the stack
     nodes_stack = nodes_stack[1:]
     if len(nodes_stack) != 1:
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
-        click.echo("Artificial coverage that will be used for testing RCB")
         raise ParsingException(
             "Failed to parse expression", stack_length=len(nodes_stack)
         )
