@@ -8,7 +8,6 @@ coverage:
         base: "auto"
         if_ci_failed: "error"
         only_pulls: true
-        target: 50
     project:
       default:
         if_ci_failed: "error"
