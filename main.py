@@ -17,6 +17,7 @@ def calculator(expression: Tuple[str]):
     for arg in expression:
         full_expression += arg
 
+    # TODO: Handle exceptions
     expression_root = parse_from_string(full_expression)
     result = evaluate_expression(expression_root)
     click.echo(f"Expression result: {result}")

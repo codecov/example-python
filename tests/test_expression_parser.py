@@ -9,6 +9,7 @@ from app.expression import (
 )
 
 from app.expression_parser import (
+    ParsingException,
     _add_node_to_stack,
     _is_operation,
     _symbol_to_op,
@@ -116,3 +117,17 @@ def test_add_node_to_stack(current_stack, new_node, expected):
 def test_parse_expression(expression, expected):
     parsed_expression = parse_from_string(expression)
     assert parsed_expression == expected
+
+
+def test_parsing_error_unknown_char():
+    with pytest.raises(ParsingException) as exp:
+        parse_from_string("12h9")
+    assert str(exp.value) == "Failed to parse expression"
+    assert exp.value.error_index == 2
+
+
+def test_parsing_error_dangling_expression():
+    with pytest.raises(ParsingException) as exp:
+        parse_from_string("12 23 42")
+    assert str(exp.value) == "Failed to parse expression"
+    assert exp.value.stack_length == 3
