@@ -23,6 +23,6 @@ jobs:
           flags: unit,python${{ matrix.python-version }}
           verbose: true
           fail_ci_if_error: true
-          url: ${{ secrets.CODECOV_STAGING_URL }}
+          # url: $secrets.CODECOV_STAGING_URL
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_STAGING_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
