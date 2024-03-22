@@ -14,16 +14,13 @@ coverage:
         only_pulls: true
         target: "auto"
 
+ignore:
+  - "**/*bundle"
 
 
 flag_management:
   default_rules:
-    carryforward: true
-  individual_flags:
-    - carryforward: false
-      name: unit
-    - carryforward: false
-      name: python3.10
+    carryforward: false
 
 cli:
   plugins:
