@@ -15,7 +15,7 @@ jobs:
           name: Run tests and collect coverage
           command: pytest --cov app
       - codecov/upload:
-          token: $CODECOV_TOKEN
+          token: CODECOV_TOKEN
 
 workflow:
   version: 2.1
