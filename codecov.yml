@@ -21,6 +21,10 @@ ignore:
 flag_management:
   default_rules:
     carryforward: false
+  individual_flags:
+    - name: 'ats-test'
+      carryforward: true
+      carryforward_mode: "labels"
 
 cli:
   plugins:
