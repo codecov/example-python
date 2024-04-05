@@ -15,7 +15,9 @@ coverage:
         target: "auto"
 
 ignore:
-  - "**/*bundle"
+  - 'packages/app-test/containers/MyPackage'
+  - 'packages/app-test/containers/MyPackage/MyPackage.py'
+  - 'packages/app-test/containers/MyPackage/**/*'
 
 
 flag_management:
@@ -26,8 +28,3 @@ flag_management:
       carryforward: true
       carryforward_mode: "labels"
 
-cli:
-  plugins:
-    pycoverage:
-      path_to_coverage_file: '.artifacts/.coverage'
-      report_type: "json"
