@@ -21,7 +21,7 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@d1f1eb8ced025a661e3a2070d7c9462978291164
         with:
           name: ${{ matrix.label-version }}-${{ matrix.attempt }}
           flags: smart-tests
