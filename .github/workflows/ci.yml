@@ -8,7 +8,6 @@ jobs:
         repeat: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         repeat2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         repeat3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        repeat4: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
