@@ -26,6 +26,7 @@ jobs:
         with:
           fail_ci_if_error: true
           verbose: true
+          codecov_curl_args: --retry-max-time 10
 
 
 
