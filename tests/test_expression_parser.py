@@ -103,15 +103,48 @@ def test_add_node_to_stack(current_stack, new_node, expected):
             ),
         ),
         (
-            "1+2*4",
+            "1+2-3",
             BinaryOpNode(
                 lhs=BinaryOpNode(
                     lhs=BaseNode(lhs=1), op=BinaryOperation.ADD, rhs=BaseNode(lhs=2)
                 ),
-                op=BinaryOperation.MULTIPLY,
-                rhs=BaseNode(lhs=4),
+                op=BinaryOperation.SUBTRACT,
+                rhs=BaseNode(lhs=3),
             ),
-        ),  # This is actually incorrect, but program doesn't handle operation precedence yet
+        ),
+        (
+            "1-2+3",
+            BinaryOpNode(
+                lhs=BinaryOpNode(
+                    lhs=BaseNode(lhs=1),
+                    op=BinaryOperation.SUBTRACT,
+                    rhs=BaseNode(lhs=2),
+                ),
+                op=BinaryOperation.ADD,
+                rhs=BaseNode(lhs=3),
+            ),
+        ),
+        (
+            "1+2*4",
+            BinaryOpNode(
+                lhs=BaseNode(lhs=1),
+                op=BinaryOperation.ADD,
+                rhs=BinaryOpNode(
+                    lhs=BaseNode(lhs=2),
+                    op=BinaryOperation.MULTIPLY,
+                    rhs=BaseNode(lhs=4),
+                ),
+            ),
+        ),
+        ("-1", UnitaryOpNode(lhs=BaseNode(lhs=1), op=UnaryOperation.MINUS)),
+        (
+            "-1-2",
+            BinaryOpNode(
+                lhs=UnitaryOpNode(lhs=BaseNode(lhs=1), op=UnaryOperation.MINUS),
+                op=BinaryOperation.SUBTRACT,
+                rhs=BaseNode(lhs=2),
+            ),
+        ),
     ],
 )
 def test_parse_expression(expression, expected):

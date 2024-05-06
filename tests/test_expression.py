@@ -9,6 +9,59 @@ from app.expression import (
 )
 
 
+class TestBinaryOperationOperators(object):
+    def test_equality(self):
+        bin_op = BinaryOperation.SUBTRACT
+        assert type(bin_op) == BinaryOperation
+        assert (bin_op == 1) == False
+        assert (bin_op == "bin_op") == False
+        assert (bin_op == True) == False
+        assert (bin_op == UnaryOperation.MINUS) == False
+        assert (bin_op == BinaryOperation.ADD) == False
+        assert (bin_op == BinaryOperation.SUBTRACT) == True
+
+    def test_lt(self):
+        subtract = BinaryOperation.SUBTRACT
+        add = BinaryOperation.ADD
+        mult = BinaryOperation.MULTIPLY
+        pow = BinaryOperation.POW
+        assert (subtract < add) == False
+        assert (add < subtract) == False
+        assert (subtract < mult) == False
+        assert (mult < subtract) == True
+        assert (pow < mult) == True
+        assert (pow < add) == True
+        assert (pow < UnaryOperation.MINUS) == False
+
+    def test_error(self):
+        add = BinaryOperation.ADD
+        with pytest.raises(TypeError) as err:
+            add < "add"
+        assert str(err.value) == "can't compare BinaryOperation with <class 'str'>"
+
+
+class TestUnaryOperationOperators(object):
+    def test_equality(self):
+        unary_op = UnaryOperation.MINUS
+        assert (unary_op == 1) == False
+        assert (unary_op == "unary_op") == False
+        assert (unary_op == BinaryOperation.SUBTRACT) == False
+        assert (unary_op == UnaryOperation.SQRT) == False
+        assert (unary_op == UnaryOperation.MINUS) == True
+
+    def test_lt(self):
+        unary_op = UnaryOperation.MINUS
+        assert (unary_op < BinaryOperation.SUBTRACT) == True
+        assert (unary_op < BinaryOperation.POW) == True
+        assert (unary_op < UnaryOperation.SQRT) == False
+
+    def test_error(self):
+        unary_op = UnaryOperation.MINUS
+        with pytest.raises(TypeError) as err:
+            unary_op < "unary_op"
+        assert str(err.value) == "can't compare UnaryOperation with <class 'str'>"
+
+
 @pytest.mark.parametrize(
     "expression,expected_result",
     [

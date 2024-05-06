@@ -5,18 +5,40 @@ from app.calculator import Calculator
 
 from functools import partial
 
+
 # Why wrap the function of the enum in partial?
 # https://stackoverflow.com/a/40339397
 class BinaryOperation(Enum):
-    ADD = partial(Calculator.add)
-    SUBTRACT = partial(Calculator.subtract)
-    MULTIPLY = partial(Calculator.multiply)
-    DIVIDE = partial(Calculator.divide)
-    POW = partial(Calculator.pow)
-    SQRT = partial(Calculator.sqrt)
+    """Represents a Calculator operation along with its precedence over other operations.
+    Formatted as (function, precedence_value)
+    smaller precedence_value should be executed first
+    """
+
+    ADD = (partial(Calculator.add), 3)
+    SUBTRACT = (partial(Calculator.subtract), 3)
+    MULTIPLY = (partial(Calculator.multiply), 2)
+    DIVIDE = (partial(Calculator.divide), 2)
+    POW = (partial(Calculator.pow), 1)
+    SQRT = (partial(Calculator.sqrt), 1)
 
     def __call__(self, *args):
-        return self.value(*args)
+        op, _ = self.value
+        return op(*args)
+
+    def __eq__(self, value: object) -> bool:
+        if type(value) != BinaryOperation:
+            return False
+        return value.value == self.value
+
+    def __lt__(self, value: object) -> bool:
+        if type(value) not in [BinaryOperation, UnaryOperation]:
+            raise TypeError(f"can't compare BinaryOperation with {type(value)}")
+        if type(value) == UnaryOperation:
+            # UnaryOperation always has precedence over binary ones
+            return False
+        _, precedence_value = self.value
+        _, other_precedence_value = value.value
+        return precedence_value < other_precedence_value
 
 
 class UnaryOperation(Enum):
@@ -27,6 +49,20 @@ class UnaryOperation(Enum):
     def __call__(self, *args):
         return self.value(*args)
 
+    def __eq__(self, value: object) -> bool:
+        if type(value) != UnaryOperation:
+            return False
+        return value.value == self.value
+
+    def __lt__(self, value: object) -> bool:
+        if type(value) not in [BinaryOperation, UnaryOperation]:
+            raise TypeError(f"can't compare UnaryOperation with {type(value)}")
+        if type(value) == BinaryOperation:
+            # UnaryOperation has precedence over BinaryOperation
+            return True
+        # All UnaryOperations have the same level of precedence among themselves
+        return False
+
 
 @dataclass
 class BaseNode:
@@ -35,17 +71,17 @@ class BaseNode:
 
 
 @dataclass
-class UnitaryOpNode:
+class UnitaryOpNode(BaseNode):
     op: UnaryOperation
     lhs: "Node"
     rhs = None
 
 
 @dataclass
-class BinaryOpNode:
+class BinaryOpNode(BaseNode):
     op: BinaryOperation
     lhs: "Node"
-    rhs: "Node"
+    rhs: "Node" = None
 
 
 Node = Union[BaseNode, BinaryOpNode, UnitaryOpNode]
