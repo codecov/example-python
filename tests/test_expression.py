@@ -91,6 +91,18 @@ class TestUnaryOperationOperators(object):
             9,
         ),
         (UnitaryOpNode(op=UnaryOperation.MINUS, lhs=BaseNode(lhs=1)), -1),
+        (
+            BinaryOpNode(
+                lhs=BaseNode(lhs=1),
+                op=BinaryOperation.ADD,
+                rhs=BinaryOpNode(
+                    lhs=BaseNode(lhs=2),
+                    op=BinaryOperation.MULTIPLY,
+                    rhs=BaseNode(lhs=4),
+                ),
+            ),
+            9,
+        ),
     ],
 )
 def test_expressions(expression, expected_result):

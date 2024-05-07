@@ -136,6 +136,22 @@ def test_add_node_to_stack(current_stack, new_node, expected):
                 ),
             ),
         ),
+        (
+            "1+2*4^2",
+            BinaryOpNode(
+                lhs=BaseNode(lhs=1),
+                op=BinaryOperation.ADD,
+                rhs=BinaryOpNode(
+                    lhs=BaseNode(lhs=2),
+                    op=BinaryOperation.MULTIPLY,
+                    rhs=BinaryOpNode(
+                        lhs=BaseNode(lhs=4),
+                        op=BinaryOperation.POW,
+                        rhs=BaseNode(lhs=2),
+                    ),
+                ),
+            ),
+        ),
         ("-1", UnitaryOpNode(lhs=BaseNode(lhs=1), op=UnaryOperation.MINUS)),
         (
             "-1-2",
