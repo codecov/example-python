@@ -40,11 +40,17 @@ class BinaryOperation(Enum):
         _, other_precedence_value = value.value
         return precedence_value < other_precedence_value
 
+    def __repr__(self) -> str:
+        return f"{self.name}"
+
 
 class UnaryOperation(Enum):
     # TODO: Support Unary +
     SQRT = partial(Calculator.sqrt)
     MINUS = partial(Calculator.minus)
+
+    def __repr__(self) -> str:
+        return f"{self.name}"
 
     def __call__(self, *args):
         return self.value(*args)
@@ -69,6 +75,9 @@ class BaseNode:
     lhs: float
     op = None
 
+    def __repr__(self) -> str:
+        return "[{}]".format(self.lhs)
+
 
 @dataclass
 class UnitaryOpNode(BaseNode):
@@ -76,12 +85,18 @@ class UnitaryOpNode(BaseNode):
     lhs: "Node"
     rhs = None
 
+    def __repr__(self) -> str:
+        return f"{self.op.name}({self.lhs})"
+
 
 @dataclass
 class BinaryOpNode(BaseNode):
     op: BinaryOperation
     lhs: "Node"
     rhs: "Node" = None
+
+    def __repr__(self) -> str:
+        return f"{self.op.name}({self.lhs}, {self.rhs})"
 
 
 Node = Union[BaseNode, BinaryOpNode, UnitaryOpNode]

@@ -5,3 +5,11 @@ flag_management:
     - name: "ats-test"
       carryforward: true
       carryforward_mode: "labels"
+
+coverage:
+  status:
+    project: true
+    patch: true
+
+comment:
+  hide_project_coverage: false

@@ -17,7 +17,7 @@ class ParsingException(Exception):
         self,
         *args,
         error_index: Optional[int] = None,
-        stack_length: Optional[int] = None
+        stack_length: Optional[int] = None,
     ) -> None:
         super().__init__(*args)
         self.error_index = error_index
@@ -76,15 +76,27 @@ def _handle_operation_on_top(new_node: BaseNode, stack: list) -> None:
     stack.append(node_to_add)
 
 
+def _handle_push_operation_with_higher_precedence(
+    new_node: Operation, node_stack: list
+):
+    rightmost_op_node = node_stack[-1]
+    node_to_add = BinaryOpNode(op=new_node, lhs=None, rhs=None)
+    # We need to scan the subtree from the 'root' node to find the
+    # rightmost operand that was wrongfully assigned to a lower-precedence operation
+    while isinstance(rightmost_op_node.rhs, BinaryOpNode):
+        rightmost_op_node = rightmost_op_node.rhs
+    rightmost_operand = rightmost_op_node.rhs
+    rightmost_op_node.rhs = node_to_add
+    node_to_add.lhs = rightmost_operand
+    node_stack.append(node_to_add)
+
+
 def _add_node_to_stack(new_node: BaseNode | Operation, stack: list) -> list:
     if isinstance(stack[-1], Operation):
         _handle_operation_on_top(new_node, stack)
     elif _is_pushing_operation_with_higher_precedence(new_node, stack[-1]):
         # Fix the stack to create nodes correctly
-        existing_node = stack[-1]
-        node_to_add = BinaryOpNode(op=new_node, lhs=existing_node.rhs, rhs=None)
-        existing_node.rhs = node_to_add
-        stack.append(node_to_add)
+        _handle_push_operation_with_higher_precedence(new_node, stack)
     elif _is_pushing_second_operand_of_existing_operation(new_node, stack[-1]):
         # This happens if an operation of higher precedence came after one of lower precedence
         stack[-1].rhs = new_node
