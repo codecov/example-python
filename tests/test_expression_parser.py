@@ -7,14 +7,9 @@ from app.expression import (
     UnaryOperation,
     UnitaryOpNode,
 )
-
-from app.expression_parser import (
-    ParsingException,
-    _add_node_to_stack,
-    _is_operation,
-    _symbol_to_op,
-    parse_from_string,
-)
+from app.expression_parser import parse_from_string
+from app.expression_parser.exceptions import ParsingException
+from app.expression_parser.helpers import add_node_to_stack, is_operation, symbol_to_op
 
 
 @pytest.mark.parametrize(
@@ -33,7 +28,7 @@ from app.expression_parser import (
     ],
 )
 def test_is_operation(symbol, outcome):
-    assert _is_operation(symbol) == outcome
+    assert is_operation(symbol) == outcome
 
 
 @pytest.mark.parametrize(
@@ -47,7 +42,7 @@ def test_is_operation(symbol, outcome):
     ],
 )
 def test_get_op_from_symbol_binary_ops(symbol, outcome):
-    result = _symbol_to_op(symbol)
+    result = symbol_to_op(symbol)
     assert isinstance(result, Operation)
     assert result == outcome
 
@@ -61,7 +56,7 @@ def test_get_op_from_symbol_binary_ops(symbol, outcome):
     ],
 )
 def test_get_op_from_symbol_unary_ops(symbol, is_unary, outcome):
-    result = _symbol_to_op(symbol, is_unary=is_unary)
+    result = symbol_to_op(symbol, is_unary=is_unary)
     assert isinstance(result, Operation)
     assert result == outcome
 
@@ -88,7 +83,7 @@ def test_get_op_from_symbol_unary_ops(symbol, is_unary, outcome):
     ],
 )
 def test_add_node_to_stack(current_stack, new_node, expected):
-    new_stack = _add_node_to_stack(new_node, current_stack)
+    new_stack = add_node_to_stack(new_node, current_stack)
     assert new_stack == expected
 
 
