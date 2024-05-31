@@ -1,5 +1,4 @@
----
-format_version: '13'
+format_version: "13"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: other
 workflows:
@@ -8,10 +7,21 @@ workflows:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@8: {}
+    - script@1:
+        inputs:
+        - script_file_path: null
+        - content: |
+            #!/usr/bin/env bash
+            set -e
+            set -o pipefail
+            set -x # debug log
+
+            pip install -r requirements.txt
+            pytest --cov app
     - codecov@3:
         inputs:
         - OS: macos
-        - CODECOV_TOKEN: "$CODECOV_TOKEN"
+        - CODECOV_TOKEN: $CODECOV_TOKEN
     - deploy-to-bitrise-io@2: {}
 meta:
   bitrise.io:
@@ -20,6 +30,5 @@ meta:
 trigger_map:
 - push_branch: main
   workflow: primary
-- pull_request_source_branch: "*"
+- pull_request_source_branch: '*'
   workflow: primary
-
