@@ -16,7 +16,7 @@ workflows:
             set -o pipefail
             set -x # debug log
 
-            pip install -r requirements.txt
+            pip3 install -r requirements.txt
             pytest --cov app
     - codecov@3:
         inputs:
