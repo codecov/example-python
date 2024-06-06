@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  codecov: codecov/codecov@3
+  codecov: codecov/codecov@4
 
 jobs:
   build:

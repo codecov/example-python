@@ -1,6 +1,13 @@
-profiling:
-  critical_files_paths:
-    - app/calculator.py
+flag_management:
+  individual_flags:
+    - name: smart-tests
+      carryforward: true
+      carryforward_mode: "labels"
+      statuses:
+        - type: "project"
+        - type: "patch"
 
-comment:
-  show_critical_paths: true
+cli:
+  plugins:
+    pycoverage:
+      report_type: "json"
