@@ -11,3 +11,9 @@ class ParsingException(Exception):
         super().__init__(*args)
         self.error_index = error_index
         self.stack_length = stack_length
+
+
+class UnknownOperation(Exception):
+    def __init__(self, *args: object, op: str) -> None:
+        super().__init__(*args)
+        self.operation = op

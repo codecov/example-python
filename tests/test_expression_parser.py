@@ -8,7 +8,7 @@ from app.expression import (
     UnitaryOpNode,
 )
 from app.expression_parser import parse_from_string
-from app.expression_parser.exceptions import ParsingException
+from app.expression_parser.exceptions import ParsingException, UnknownOperation
 from app.expression_parser.helpers import add_node_to_stack, is_operation, symbol_to_op
 
 
@@ -59,6 +59,12 @@ def test_get_op_from_symbol_unary_ops(symbol, is_unary, outcome):
     result = symbol_to_op(symbol, is_unary=is_unary)
     assert isinstance(result, Operation)
     assert result == outcome
+
+
+def test_get_op_raises_unknown_operation():
+    with pytest.raises(UnknownOperation) as exp_info:
+        symbol_to_op(":")
+    assert exp_info.value.operation == ":"
 
 
 @pytest.mark.parametrize(

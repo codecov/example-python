@@ -7,6 +7,7 @@ from app.expression import (
     Node,
     UnitaryOpNode,
 )
+from app.expression_parser.exceptions import UnknownOperation
 
 
 def is_operation(char: str) -> bool:
@@ -23,6 +24,8 @@ def symbol_to_op(symbol: str, is_unary: bool = False) -> Operation:
         # TODO: Support sqrt with precision
         "√": UnaryOperation.SQRT,
     }
+    if symbol not in lookup:
+        raise UnknownOperation(op=symbol)
     return lookup[symbol]
 
 
