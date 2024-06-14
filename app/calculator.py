@@ -4,6 +4,8 @@ class Calculator:
         return x + y
 
     def subtract(x, y):
+        if x > 0:
+            print('ok')
         return x - y
 
     def multiply(x, y):
