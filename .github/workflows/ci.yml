@@ -16,6 +16,13 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
         run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
+      - name: Run upload
+        run: |
+          curl -Os https://cli.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -v create-commit -t ${{ secrets.CODECOV_TOKEN }}
+          ./codecov -v create-report -t ${{ secrets.CODECOV_TOKEN }}
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
