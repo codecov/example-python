@@ -1,6 +1,3 @@
-codecov:
-  token: 8bc7e3d2-552d-4b27-aa90-64b13fd7311c
-
 flag_management:
   individual_flags:
     - name: smart-tests
