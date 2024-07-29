@@ -20,5 +20,6 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           verbose: true
-        env:
+        env:codecov: 
+ token: 89489db3-93ac-41c4-ae60-52dcaa906a5c
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
