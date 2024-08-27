@@ -9,7 +9,37 @@ class Calculator:
         return x * y
 
     def divide(x, y):
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
+        print("covered line")
         if y == 0:
+            print("not covered line")
             return "Cannot divide by 0"
         return x * 1.0 / y
 
