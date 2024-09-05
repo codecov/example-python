@@ -6,3 +6,7 @@ def hello_world(language: str) -> str | None:
         "french": "Salut, Monde",
     }
     return translations.get(language)
+
+
+def something():
+    return "Something"

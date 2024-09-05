@@ -1,5 +1,5 @@
 import pytest
-from app.random import hello_world
+from app.random import hello_world, something
 
 
 @pytest.mark.parametrize(
@@ -8,3 +8,7 @@ from app.random import hello_world
 )
 def test_hello_world(language, expected):
     assert hello_world(language) == expected
+
+
+def test_something():
+    assert something() == "something"
