@@ -3,3 +3,7 @@ __pycache__/
 
 .artifacts/.coverage
 .artifacts/*coverage*
+
+.vscode/
+
+coverage*.xml
