@@ -27,7 +27,7 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           file: fake-file.txt
-          flag: fake
+          flags: fake
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
