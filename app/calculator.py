@@ -14,3 +14,5 @@ class Calculator:
             return 'Cannot divide by 0'
         return x * 1.0 / y
 
+    def smiles():
+        return ':)'
