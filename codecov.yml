@@ -11,3 +11,7 @@ cli:
   plugins:
     pycoverage:
       report_type: "json"
+
+codecov:
+  notify:
+    notify_error: true
