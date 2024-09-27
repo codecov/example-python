@@ -17,6 +17,7 @@ jobs:
             pytest --cov app
             coverage xml
       - codecov/upload:
+          cli_args: -v
           token: CODECOV_TOKEN
           upload_args: --plugin noop
 
