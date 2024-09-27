@@ -14,7 +14,8 @@ jobs:
       - run:
           name: Run tests and collect coverage
           command: pytest --cov app
-      - codecov/upload
+      - codecov/upload:
+          upload_args: --plugin noop
 
 workflow:
   version: 2.1
