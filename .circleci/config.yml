@@ -15,6 +15,7 @@ jobs:
           name: Run tests and collect coverage
           command: pytest --cov app
       - codecov/upload:
+          token: ${CODECOV_TOKEN}
           upload_args: --plugin noop
 
 workflow:
