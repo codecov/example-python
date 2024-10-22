@@ -4,17 +4,17 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-			- name: Checkout codecov-cli test branch
-				uses: actions/checkout@v4
-				with:
-					repository: codecov/codecov-cli
-					ref: 1c261cd6b9bbef57bba3595c8688c388ce69ac5d
+      - name: Checkout codecov-cli test branch
+        uses: actions/checkout@v4
+        with:
+          repository: codecov/codecov-cli
+          ref: 1c261cd6b9bbef57bba3595c8688c388ce69ac5d
           submodules: 'true'
 
       - name: Run pip install .
-				run: |
+        run: |
           pip install -r requirements.txt
-					pip install .
+          pip install .
 
       - name: Checkout
         uses: actions/checkout@v4
