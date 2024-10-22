@@ -23,7 +23,6 @@ jobs:
           token: CODECOV_TOKEN
           verbose: true
           when: always
-
 workflow:
   version: 2.1
   build-test:
