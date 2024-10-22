@@ -1,6 +1,7 @@
+---
 version: 2.1
 orbs:
-  codecov: codecov/codecov@4
+  codecov: codecov/codecov@5
 
 jobs:
   build:
@@ -17,9 +18,11 @@ jobs:
             pytest --cov app
             coverage xml
       - codecov/upload:
-          cli_args: -v
+          files: coverage.xml
+          plugins: noop
           token: CODECOV_TOKEN
-          upload_args: --plugin noop
+          verbose: true
+          when: always
 
 workflow:
   version: 2.1
