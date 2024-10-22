@@ -29,6 +29,4 @@ jobs:
 
       - name: Upload to Codecov
         run: |
-          codecovcli upload-process
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          codecovcli -v upload-process
