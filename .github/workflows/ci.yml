@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: codecov/codecov-cli
-          ref: 1c261cd6b9bbef57bba3595c8688c388ce69ac5d
+          ref: f7473ad88e1d1bac79cde59e3e4c2f9f54017499
           submodules: 'true'
 
       - name: Run pip install .
@@ -27,3 +27,8 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
 
+      - name: Upload to Codecov
+        run: |
+          codecovcli upload-process
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
