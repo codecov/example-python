@@ -7,4 +7,4 @@ py==1.11.0
 pyparsing==3.2.0
 pytest==8.3.3
 pytest-cov==6.0.0
-tomli==2.0.2
+tomli==2.1.0
