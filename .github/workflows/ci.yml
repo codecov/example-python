@@ -17,7 +17,7 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@df81091b16c73cdf4fcef7e68ca9c33a301a6cda
+        uses: codecov/codecov-action@20e8f5f21ada27a8f9883561594e86d24f95a094
         with:
           verbose: true
         env:
