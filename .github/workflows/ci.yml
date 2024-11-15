@@ -17,7 +17,7 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@th/fix-tokenless-branches
+        uses: codecov/codecov-action@th/fix-pr-and-commit-fixes
         with:
           fail_ci_if_error: true
           verbose: true
