@@ -18,8 +18,7 @@ jobs:
         run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@th/fix-tokenless-branches
-        # uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
           verbose: true
-          override_branch: fakebranch
+          env: OS,PYTHON
