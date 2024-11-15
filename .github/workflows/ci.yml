@@ -22,3 +22,4 @@ jobs:
         with:
           fail_ci_if_error: true
           verbose: true
+          override_branch: fakebranch
