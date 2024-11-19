@@ -15,9 +15,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
-        run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
+        run: pytest --cov app
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@th/fix-pr-and-commit-fixes
+        uses: codecov/codecov-action@th/do-not-merge
         with:
           fail_ci_if_error: true
           verbose: true
+          use_oidc: true
