@@ -18,4 +18,5 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           verbose: true
-          use_oidc: true
+      env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
