@@ -21,12 +21,12 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
       - name: Upload coverage to Codecov (token)
-        uses: codecov/codecov-action@th/fix-head-repo-for-tokenless
+        uses: codecov/codecov-action@v5
         with:
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Upload coverage to Codecov (no token)
-        uses: codecov/codecov-action@th/fix-head-repo-for-tokenless
+        uses: codecov/codecov-action@v5
         with:
           verbose: true
