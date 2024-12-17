@@ -1,4 +1,4 @@
-attrs==24.2.0
+attrs==24.3.0
 coverage==7.6.9
 iniconfig==2.0.0
 packaging==24.2
