@@ -17,25 +17,25 @@ jobs:
       - name: Run tests and collect coverage
         run: pytest --cov app
       - name: Upload coverage to Codecov (arg token)
-        uses: codecov/codecov-action@main
+        uses: codecov/codecov-action@th/bump-scripts-and-logging
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
       - name: Upload coverage to Codecov (env token)
-        uses: codecov/codecov-action@main
+        uses: codecov/codecov-action@th/bump-scripts-and-logging
         with:
           fail_ci_if_error: true
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Upload coverage to Codecov (no token)
-        uses: codecov/codecov-action@main
+        uses: codecov/codecov-action@th/bump-scripts-and-logging
         with:
           fail_ci_if_error: true
           verbose: true
       - name: Upload coverage to Codecov (oidc)
-        uses: codecov/codecov-action@main
+        uses: codecov/codecov-action@th/bump-scripts-and-logging
         with:
           fail_ci_if_error: true
           use_oidc: true
