@@ -3,6 +3,8 @@ on: [push, pull_request]
 jobs:
   run:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,9 +16,27 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
         run: pytest --cov app
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+      - name: Upload coverage to Codecov (arg token)
+        uses: codecov/codecov-action@main
         with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
+      - name: Upload coverage to Codecov (env token)
+        uses: codecov/codecov-action@main
+        with:
+          fail_ci_if_error: true
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage to Codecov (no token)
+        uses: codecov/codecov-action@main
+        with:
+          fail_ci_if_error: true
+          verbose: true
+      - name: Upload coverage to Codecov (oidc)
+        uses: codecov/codecov-action@main
+        with:
+          fail_ci_if_error: true
+          use_oidc: true
+          verbose: true
