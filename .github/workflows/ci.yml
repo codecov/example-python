@@ -16,6 +16,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests and collect coverage
         run: pytest --cov app
+
       - name: Upload coverage to Codecov (arg token)
         uses: codecov/codecov-action@main
         with:
