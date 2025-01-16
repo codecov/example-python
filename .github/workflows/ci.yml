@@ -20,6 +20,7 @@ jobs:
         uses: codecov/codecov-action@main
         with:
           fail_ci_if_error: true
+          exclude: exclusion
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
       - name: Upload coverage to Codecov (env token)
