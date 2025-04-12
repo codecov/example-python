@@ -42,7 +42,7 @@ jobs:
           CC_TOKEN=$(echo $response | cut -d\" -f6)
           echo -e "$CC_TOKEN"
       - name: Upload coverage to Codecov (oidc)
-        uses: codecov/codecov-action@main
+        uses: codecov/codecov-action@v5.4.1-beta
         with:
           fail_ci_if_error: true
           use_oidc: true
