@@ -5,6 +5,6 @@ packaging==25.0
 pluggy==1.6.0
 py==1.11.0
 pyparsing==3.2.3
-pytest==8.3.5
+pytest==8.4.1
 pytest-cov==6.1.0
 tomli==2.2.1
