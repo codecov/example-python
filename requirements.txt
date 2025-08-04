@@ -1,5 +1,5 @@
 attrs==25.3.0
-coverage==7.9.1
+coverage==7.10.2
 iniconfig==2.1.0
 packaging==25.0
 pluggy==1.6.0
