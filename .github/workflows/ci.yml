@@ -40,3 +40,17 @@ jobs:
           fail_ci_if_error: true
           use_oidc: true
           verbose: true
+      - name: Upload coverage to Codecov (oidc)
+        uses: codecov/codecov-action@main
+        with:
+          fail_ci_if_error: true
+          use_oidc: true
+          flags: testone
+          verbose: true
+      - name: Upload coverage to Codecov (oidc)
+        uses: codecov/codecov-action@main
+        with:
+          fail_ci_if_error: true
+          use_oidc: true
+          flags: test-two
+          verbose: true

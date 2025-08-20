@@ -15,7 +15,10 @@ jobs:
           name: Run tests and collect coverage
           command: pytest --cov app
       - codecov/upload
-
+      - codecov/upload:
+          flags: testthree
+      - codecov/upload:
+          flags: test-four
 workflow:
   version: 2.1
   build-test:
