@@ -68,14 +68,3 @@ jobs:
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      - name: Upload coverage to Codecov (no token)
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-          verbose: true
-      - name: Upload coverage to Codecov (oidc)
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-          use_oidc: true
-          verbose: true
