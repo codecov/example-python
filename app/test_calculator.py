@@ -1,4 +1,6 @@
 from .calculator import Calculator
+import time
+import random
 
 
 def test_add():
@@ -29,3 +31,13 @@ def test_divide():
     assert Calculator.divide(0, 2.0) == 0
     assert Calculator.divide(-4, 2.0) == -2.0
     # assert Calculator.divide(2.0, 0.0) == 'Cannot divide by 0'
+
+def test_fail():
+    assert True == False
+
+def test_flaky():
+    assert random.random() < 0.8  # This should fail 20% of the time
+
+def test_slow():
+    time.sleep(5)
+    assert True == True
