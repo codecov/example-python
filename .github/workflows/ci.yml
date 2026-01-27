@@ -47,6 +47,6 @@ jobs:
           use_oidc: true
           verbose: true
       - name: Try local upload
-        uses: getsentry/codecov-action@v1
+        uses: getsentry/codecov-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
