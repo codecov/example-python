@@ -18,9 +18,10 @@ jobs:
         run: pytest --cov app --junitxml=junit.xml -o junit_family=legacy
       - name: Upload test results to Codecov
         if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
+        uses: codecov/codecov-action@main
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          report-type: test_results
       - name: Upload coverage to Codecov (arg token)
         uses: codecov/codecov-action@main
         with:
@@ -45,3 +46,7 @@ jobs:
           fail_ci_if_error: true
           use_oidc: true
           verbose: true
+      - name: Try local upload
+        uses: getsentry/codecov-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
