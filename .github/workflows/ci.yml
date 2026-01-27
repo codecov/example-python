@@ -17,7 +17,7 @@ jobs:
       - name: Run tests and collect coverage
         run: |
           pytest --cov app --junitxml=junit.xml -o junit_family=legacy
-          coverage json
+          coverage xml
       - name: Upload test results to Codecov
         if: ${{ !cancelled() }}
         uses: codecov/codecov-action@main
