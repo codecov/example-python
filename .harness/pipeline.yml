@@ -1,0 +1,50 @@
+# this file is used when repo in Harness is configured to be Remote instead of Inline
+
+pipeline:
+  name: First Pipeline
+  identifier: First_Pipeline
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: GitHub_Connector
+        repoName: example-python
+        build: <+input>
+  stages:
+    - stage:
+        name: Test
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+            paths: []
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run flow
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo "Using remote config version"
+                      python3 -m pip install --upgrade "pip==26.1"
+                      python3 -m pip install -r requirements.txt
+                      python3 -m pip install -v git+https://github.com/codecov/codecov-cli.git@cy/harness_ci#subdirectory=codecov-cli
+                      pytest --cov app --junitxml=junit.xml -o junit_family=legacy
+                      codecov-cli --verbose upload-process --fail-on-error -t f7dfc3ad-4fa8-4e62-ab9f-4a33e2894f46
+                  description: Install requirements, install codecov-cli from branch, run tests, then upload
