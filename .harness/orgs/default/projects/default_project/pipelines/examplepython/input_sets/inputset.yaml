@@ -1,0 +1,14 @@
+inputSet:
+  name: inputset
+  identifier: inputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: examplepython
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
