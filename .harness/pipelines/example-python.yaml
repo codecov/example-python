@@ -1,0 +1,41 @@
+pipeline:
+  name: example-python
+  identifier: examplepython
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Install deps
+                  identifier: Install_Deps
+                  spec:
+                    shell: Sh
+                    command: pip install -r requirements.txt
+              - step:
+                  type: Run
+                  name: Pytest
+                  identifier: Pytest
+                  spec:
+                    shell: Sh
+                    command: pytest --cov app
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1778001905690
+        repoName: codecov/example-python
+        build: <+input>
