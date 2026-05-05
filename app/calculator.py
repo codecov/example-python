@@ -15,4 +15,4 @@ class Calculator:
         return x * 1.0 / y
 
     def test():
-        return 'sample change'
+        return 'sample change again'
