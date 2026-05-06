@@ -20,6 +20,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |
+                      pip install --upgrade pip setuptools wheel
                       pip install -r requirements.txt
                       pip install "git+https://github.com/codecov/codecov-cli@cy/harness_ci#subdirectory=codecov-cli"
               - step:
