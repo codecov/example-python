@@ -40,6 +40,7 @@ pipeline:
                       curl -Os https://cli.codecov.io/latest/linux/codecov.SHA256SUM.sig
                       gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
                       shasum -a 256 -c codecov.SHA256SUM
+                      chmod u+x ./codecov
                       ./codecov --verbose upload-process -t $CODECOV_TOKEN
                     envVariables:
                       CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
