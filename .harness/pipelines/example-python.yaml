@@ -19,7 +19,9 @@ pipeline:
                   identifier: Install_Deps
                   spec:
                     shell: Sh
-                    command: pip install -r requirements.txt
+                    command: |
+                      pip install -r requirements.txt
+                      pip install -v git+https://github.com/codecov/codecov-cli.git@cy/harness_ci#subdirectory=codecov-cli
               - step:
                   type: Run
                   name: Pytest
