@@ -21,13 +21,7 @@ pipeline:
                     shell: Sh
                     command: |
                       pip install -r requirements.txt
-                      git clone https://github.com/codecov/codecov-cli.git
-                      cd codecov-cli
-                      git checkout cy/harness_ci
-                      cd codecov-cli
-                      pip install .
-                      cd ../..
-                      rm -rf codecov-cli
+                      pip install "git+https://github.com/codecov/codecov-cli@cy/harness_ci#subdirectory=codecov-cli"
               - step:
                   type: Run
                   name: Pytest
