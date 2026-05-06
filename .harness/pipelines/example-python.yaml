@@ -27,6 +27,7 @@ pipeline:
                       cd codecov-cli
                       pip install .
                       cd ../..
+                      rm -rf codecov-cli
               - step:
                   type: Run
                   name: Pytest
