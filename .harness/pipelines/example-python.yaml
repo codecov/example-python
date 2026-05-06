@@ -26,6 +26,7 @@ pipeline:
                       git checkout cy/harness_ci
                       cd codecov-cli
                       pip install .
+                      cd ../..
               - step:
                   type: Run
                   name: Pytest
