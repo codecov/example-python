@@ -22,8 +22,9 @@ pipeline:
                     command: |
                       pip install -r requirements.txt
                       git clone https://github.com/codecov/codecov-cli.git
+                      cd codecov-cli
                       git checkout cy/harness_ci
-                      cd codecov-cli/codecov-cli
+                      cd codecov-cli
                       pip install .
               - step:
                   type: Run
