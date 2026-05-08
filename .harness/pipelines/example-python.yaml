@@ -45,7 +45,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |
-                      codecov-cli --verbose upload-process -t $CODECOV_TOKEN -f harness
+                      codecov-cli --verbose upload-process -t $CODECOV_TOKEN -f harness --slug codecov/example-python
                     envVariables:
                       CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
           platform:
