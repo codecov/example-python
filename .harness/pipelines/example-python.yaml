@@ -32,6 +32,14 @@ pipeline:
                     command: pytest --cov app
               - step:
                   type: Run
+                  name: printenv
+                  identifier: Printenv
+                  spec:
+                    shell: Sh
+                    command: printenv
+              - step: 
+              
+                  type: Run
                   name: Upload to Codecov
                   identifier: Codecov
                   spec:
