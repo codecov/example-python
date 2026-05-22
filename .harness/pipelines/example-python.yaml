@@ -1,0 +1,62 @@
+pipeline:
+  name: example-python
+  identifier: examplepython
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Install deps
+                  identifier: Install_Deps
+                  spec:
+                    shell: Sh
+                    command: |
+                      pip install --upgrade pip setuptools wheel
+                      pip install -r requirements.txt
+                      pip install "git+https://github.com/codecov/codecov-cli@cy/harness_ci#subdirectory=codecov-cli"
+              - step:
+                  type: Run
+                  name: Pytest
+                  identifier: Pytest
+                  spec:
+                    shell: Sh
+                    command: pytest --cov app
+              - step:
+                  type: Run
+                  name: printenv
+                  identifier: Printenv
+                  spec:
+                    shell: Sh
+                    command: printenv
+              - step: 
+              
+                  type: Run
+                  name: Upload to Codecov
+                  identifier: Codecov
+                  spec:
+                    shell: Sh
+                    command: |
+                      codecov-cli --verbose upload-process -t $CODECOV_TOKEN -F harness --slug codecov/example-python
+                    envVariables:
+                      CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1778001905690
+        repoName: codecov/example-python
+        build: <+input>
