@@ -1,0 +1,14 @@
+inputSet:
+  name: Git Input Set
+  identifier: Git_Input_Set
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Git_Controlled_Pipeline
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
