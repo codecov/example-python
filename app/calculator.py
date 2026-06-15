@@ -14,3 +14,6 @@ class Calculator:
             return 'Cannot divide by 0'
         return x * 1.0 / y
 
+    def foo(x):
+        return -x
+
