@@ -20,6 +20,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       pip install codecov-cli
+                      pip install pytest pytest-cov
                       pytest --cov=. --cov-report=xml
                       codecovcli upload-process
                     envVariables:
