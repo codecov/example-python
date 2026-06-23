@@ -14,11 +14,15 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Echo Welcome Message
+                  name: Run
                   identifier: Echo_Welcome_Message
                   spec:
                     shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    command: |-
+                      pip install codecov-cli
+                      codecovcli upload-process
+                    envVariables:
+                      CODECOV_TOKEN: <+secrets.getValue("Codecov_Upload_Token")>
           platform:
             os: Linux
             arch: Amd64
