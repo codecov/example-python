@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_codecov_example_python_1782243281624-pr-trigger-input-set
+  identifier: Build_codecov_example_python_1782243281624prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: calvin
+  pipeline:
+    identifier: Build_codecov_example_python_1782243281624
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
