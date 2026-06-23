@@ -20,6 +20,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       pip install codecov-cli
+                      pytest --cov=. --cov-report=xml
                       codecovcli upload-process
                     envVariables:
                       CODECOV_TOKEN: <+secrets.getValue("Codecov_Upload_Token")>
