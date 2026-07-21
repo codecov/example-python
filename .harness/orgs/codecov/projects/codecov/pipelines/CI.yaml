@@ -85,5 +85,5 @@ pipeline:
     ci:
       codebase:
         connectorRef: codecov
-        repoName: codecov/example-python
+        repoName: example-python
         build: <+input>
