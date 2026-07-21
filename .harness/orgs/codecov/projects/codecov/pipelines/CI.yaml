@@ -1,0 +1,89 @@
+pipeline:
+  name: Build example-python
+  identifier: Build_codecov_example_python_1782243281624
+  projectIdentifier: codecov
+  orgIdentifier: codecov
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Install dependencies
+                  identifier: Install_dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      python -m pip install --upgrade pip
+                      pip install -r requirements.txt
+                      curl -Os https://cli.codecov.io/latest/linux/codecovcli
+                      chmod +x codecovcli
+              - step:
+                  type: Run
+                  name: Run tests and collect coverage
+                  identifier: Run_tests_and_collect_coverage
+                  spec:
+                    shell: Sh
+                    command: pytest --cov app --junitxml=junit.xml -o junit_family=legacy
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - junit.xml
+              - step:
+                  type: Run
+                  name: Upload test results to Codecov
+                  identifier: Upload_test_results_to_Codecov
+                  spec:
+                    shell: Sh
+                    command: ./codecovcli do-upload --report-type test_results -f junit.xml --fail-on-error -v
+                    envVariables:
+                      CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
+              - step:
+                  type: Run
+                  name: Upload coverage to Codecov -- arg token
+                  identifier: Upload_coverage_to_Codecov_arg_token
+                  spec:
+                    shell: Sh
+                    command: ./codecovcli do-upload -t ${CODECOV_TOKEN} --fail-on-error -v
+                    envVariables:
+                      CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
+              - step:
+                  type: Run
+                  name: Upload coverage to Codecov -- env token
+                  identifier: Upload_coverage_to_Codecov_env_token
+                  spec:
+                    shell: Sh
+                    command: ./codecovcli do-upload --fail-on-error -v
+                    envVariables:
+                      CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
+              - step:
+                  type: Run
+                  name: Upload coverage to Codecov -- no token
+                  identifier: Upload_coverage_to_Codecov_no_token
+                  spec:
+                    shell: Sh
+                    command: ./codecovcli do-upload --fail-on-error -v
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: MarkAsFailure
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github
+        repoName: codecov/example-python
+        build: <+input>
