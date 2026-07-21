@@ -84,6 +84,6 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: account.Github
+        connectorRef: account.codecov
         repoName: codecov/example-python
         build: <+input>
