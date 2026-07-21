@@ -28,21 +28,16 @@ pipeline:
                   identifier: Run_tests_and_collect_coverage
                   spec:
                     shell: Sh
-                    command: pytest --cov app --junitxml=junit.xml -o junit_family=legacy
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - junit.xml
+                    command: pytest --cov app --cov-report=lcov:lcov.info
               - step:
                   type: Run
-                  name: Upload test results to Codecov
-                  identifier: Upload_test_results_to_Codecov
+                  name: Upload coverage to Harness
+                  identifier: Upload_coverage_to_Harness
                   spec:
                     shell: Sh
-                    command: codecovcli --verbose do-upload --report-type test_results -f junit.xml --fail-on-error
+                    command: hcli cov upload --file=lcov.info
                     envVariables:
-                      CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
+                      CI_ENABLE_HCLI_FOR_TESTS: "true"
               - step:
                   type: Run
                   name: Upload coverage to Codecov -- arg token
