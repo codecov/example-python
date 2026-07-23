@@ -25,7 +25,7 @@ jobs:
         uses: codecov/codecov-action@main
         with:
           fail_ci_if_error: true
-          file: coverage-fake.xml
+          files: coverage-fake.xml
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
       - name: Upload coverage to Codecov (arg token)
