@@ -46,7 +46,54 @@ pipeline:
                   identifier: Upload_coverage_to_Codecov_arg_token
                   spec:
                     shell: Sh
-                    command: codecovcli --verbose do-upload -t ${CODECOV_TOKEN} --fail-on-error
+                    command: |-
+                      set -eu
+                      echo "========== 1. Shell / env injection =========="
+                      echo "codecovcli version: $(codecovcli --version 2>&1 || echo MISSING)"
+                      echo "CODECOV_TOKEN set: $([ -n "${CODECOV_TOKEN:-}" ] && echo yes || echo NO)"
+                      echo "CODECOV_TOKEN length: ${#CODECOV_TOKEN}"
+                      # Unresolved Harness expression would be non-empty but useless
+                      case "$CODECOV_TOKEN" in
+                        "<+"*) echo "CODECOV_TOKEN looks UNRESOLVED (starts with <+)" ;;
+                        "")     echo "CODECOV_TOKEN is empty" ;;
+                        *)      echo "CODECOV_TOKEN looks like a real value (not empty, not <+...)" ;;
+                      esac
+                      # Whitespace / newline issues break auth
+                      trimmed="$(printf '%s' "$CODECOV_TOKEN" | tr -d '[:space:]')"
+                      if [ "${#CODECOV_TOKEN}" -ne "${#trimmed}" ]; then
+                        echo "WARNING: CODECOV_TOKEN contains whitespace/newlines"
+                      else
+                        echo "CODECOV_TOKEN has no extra whitespace"
+                      fi
+                      echo
+                      echo "========== 2. Harness CI vars (slug / commit) =========="
+                      for v in HARNESS_BUILD_ID CI_REPO CI_REPO_LINK CI_REPO_REMOTE DRONE_COMMIT_SHA DRONE_COMMIT_BRANCH DRONE_PULL_REQUEST CI_BUILD_NUMBER; do
+                        eval "val=\${$v:-}"
+                        if [ -n "$val" ]; then
+                          echo "$v=<set len=${#val}>"
+                        else
+                          echo "$v=<unset>"
+                        fi
+                      done
+                      echo
+                      echo "========== 3. Does -t receive the env var? =========="
+                      # If this says 0, "$CODECOV_TOKEN" is empty at expansion time
+                      echo "Arg length when passed as -t \"\$CODECOV_TOKEN\": ${#CODECOV_TOKEN}"
+                      echo
+                      echo "========== 4. Compare injection methods =========="
+                      echo "--- 4a. via envVariables + -t (your failing path) ---"
+                      codecovcli --verbose do-upload -t "$CODECOV_TOKEN" --dry-run --fail-on-error || echo "exit=$?"
+                      echo
+                      echo "--- 4b. inline secret in command (bypass envVariables) ---"
+                      codecovcli --verbose do-upload -t "<+secrets.getValue("Codecov_Upload_Token")>" --dry-run --fail-on-error || echo "exit=$?"
+                      echo
+                      echo "--- 4c. export in script then no -t (env-only path) ---"
+                      export CODECOV_TOKEN="<+secrets.getValue("Codecov_Upload_Token")>"
+                      echo "after inline export, length=${#CODECOV_TOKEN}"
+                      codecovcli --verbose do-upload --dry-run --fail-on-error || echo "exit=$?"
+                      echo
+                      echo "========== 5. Real upload (remove --dry-run when ready) =========="
+                      codecovcli --verbose do-upload -t "$CODECOV_TOKEN" --fail-on-error
                     envVariables:
                       CODECOV_TOKEN: <+secrets.getValue("Codecov_Upload_Token")>
           platform:
