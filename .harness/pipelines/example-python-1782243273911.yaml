@@ -55,7 +55,9 @@ pipeline:
                   identifier: Upload_coverage_to_Codecov_env_token
                   spec:
                     shell: Sh
-                    command: codecovcli --verbose do-upload --fail-on-error
+                    command: |-
+                      if [ -z "$CODECOV_TOKEN" ]; then echo "CODECOV_TOKEN is empty"; exit 1; fi
+                      codecovcli --verbose do-upload --fail-on-error
                     envVariables:
                       CODECOV_TOKEN: <+secrets.getValue("Codecov_Upload_Token")>
           platform:
