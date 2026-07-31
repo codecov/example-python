@@ -48,7 +48,7 @@ pipeline:
                     shell: Sh
                     command: codecovcli --verbose do-upload -t ${CODECOV_TOKEN} --fail-on-error
                     envVariables:
-                      CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
+                      CODECOV_TOKEN: <+secrets.getValue("Codecov_Upload_Token")>
               - step:
                   type: Run
                   name: Upload coverage to Codecov -- env token
@@ -57,7 +57,7 @@ pipeline:
                     shell: Sh
                     command: codecovcli --verbose do-upload --fail-on-error
                     envVariables:
-                      CODECOV_TOKEN: <+secrets.getValue("CODECOV_TOKEN")>
+                      CODECOV_TOKEN: <+secrets.getValue("Codecov_Upload_Token")>
           platform:
             os: Linux
             arch: Amd64
