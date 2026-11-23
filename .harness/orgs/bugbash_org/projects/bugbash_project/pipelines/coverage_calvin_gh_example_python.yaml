@@ -1,0 +1,79 @@
+pipeline:
+  id: coverage_calvin_gh_example_python
+  name: coverage-calvin-gh-example-python
+  description: Build, test and upload coverage for the example-python repository on a branch
+  tags:
+    ai_generated: ""
+  inputs:
+    branch:
+      type: string
+      required: true
+      description: Branch to check out
+  clone:
+    enabled: true
+    connector: gh_calvin_codecov
+    ref:
+      type: branch
+      name: ${{ inputs.branch }}
+  stages:
+    - id: pythonPipBuildTestHostedLinuxStage_1
+      name: Python pip Build and Test on Harness Cloud (Linux)
+      clone:
+        enabled: true
+      cache:
+        enabled: true
+        paths:
+          - .harness-cache/pip
+        key: '<+pipeline.identifier>-python-pip-{{ checksum "requirements.txt" }}'
+        policy: pull-push
+      steps:
+        - id: setupPython
+          name: Setup Python
+          template:
+            uses: setupPython@1.0.0
+
+        - id: installDependenciesLinux
+          name: Install Dependencies on Linux
+          run:
+            shell: bash
+            script: |-
+              export PIP_CACHE_DIR="$PWD/.harness-cache/pip"
+              mkdir -p "$PIP_CACHE_DIR"
+              python3 -m pip install --upgrade pip
+              if [ -f requirements.txt ]; then
+                python3 -m pip install -r requirements.txt
+              fi
+              python3 -m pip install pytest-cov
+
+        - id: testLinux
+          name: Test on Linux
+          run-test:
+            shell: bash
+            script: |-
+              mkdir -p reports
+              python3 -m pytest \
+                --junitxml=reports/pytest.xml \
+                --cov=. \
+                --cov-report=lcov:reports/lcov.info
+            intelligence:
+              disabled: true
+
+        - id: pullLatestHcli
+          name: Pull Latest HCLI v28
+          run:
+            shell: bash
+            script: |-
+              curl -fsSL -o "$HOME/hcli" \
+              https://app.harness.io/storage/harness-download/harness-ti/hcli/v0.28/hcli-linux-amd64
+              chmod +x "$HOME/hcli"
+              "$HOME/hcli" --version
+        - id: coverage
+          name: Upload Coverage
+          run:
+            shell: bash
+            script: |-    
+              test -s reports/lcov.info
+              "$HOME/hcli" cov upload --file=reports/lcov.info --owner=codecov --identifier=example-python
+              "$HOME/hcli" cov wait-until --gt=90 --patch-gt=90 --timeout=1m
+            env:
+              CI_ENABLE_HCLI_FOR_TESTS: "true"
