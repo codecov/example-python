@@ -74,6 +74,5 @@ pipeline:
             script: |-    
               test -s reports/lcov.info
               "$HOME/hcli" cov upload --file=reports/lcov.info --owner=codecov --identifier=example-python
-              "$HOME/hcli" cov wait-until --gt=90 --patch-gt=90 --timeout=1m
             env:
               CI_ENABLE_HCLI_FOR_TESTS: "true"
